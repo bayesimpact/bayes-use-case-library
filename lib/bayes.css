@@ -128,21 +128,61 @@
   .brand-corner .bilogo{height:24px;}
   .cover-mark .bilogo{height:30px;}
 
-  /* ARCH layers (slide 5) */
-  .arch{display:flex; flex-direction:column; gap:10px; margin-top:28px;}
-  .arch-layer{display:grid; grid-template-columns:240px 1fr; gap:20px; align-items:center; background:var(--card); border:1px solid var(--border-soft); border-radius:14px; padding:15px 22px; box-shadow:var(--shadow);}
-  .arch-layer .al-label{font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2;}
-  .arch-layer .al-label .al-k{display:block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:3px;}
+  /* ARCH — the sovereign stack, built from the ground up (dark slide) */
+  .arch-slide.slide.dark{
+    background:
+      radial-gradient(135% 95% at 50% 114%, rgba(255,132,0,.13), transparent 56%),
+      linear-gradient(180deg, #09090b 0%, #0f0f13 50%, #16130c 100%);
+    color:#fff;
+  }
+  .arch-slide .eyebrow{color:var(--accent-orange);}
+  .arch{position:relative; display:flex; flex-direction:column; gap:13px; margin-top:26px; padding-left:60px;}
+  /* the upward construction axis: a line that brightens toward the top + arrowhead */
+  .arch::before{content:""; position:absolute; left:21px; top:16px; bottom:34px; width:2px;
+    background:linear-gradient(180deg, var(--accent-orange) 0%, rgba(255,132,0,.5) 62%, rgba(255,132,0,.1) 100%);}
+  .arch::after{content:""; position:absolute; left:16px; top:5px; width:0; height:0;
+    border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:10px solid var(--accent-orange);}
+  .arch-layer{position:relative; display:grid; grid-template-columns:230px 1fr; gap:20px; align-items:center;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px;
+    padding:15px 22px; color:#fff; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);}
+  /* step badges, numbered from the BOTTOM (foundations = 1, applications = 4) */
+  .arch-layer::before{position:absolute; left:-51px; top:50%; transform:translateY(-50%);
+    width:25px; height:25px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:#fff;
+    background:#1b1b20; border:1.5px solid rgba(255,132,0,.55); z-index:1;}
+  .arch-layer:nth-child(1)::before{content:"4";}
+  .arch-layer:nth-child(2)::before{content:"3";}
+  .arch-layer:nth-child(3)::before{content:"2";}
+  .arch-layer:nth-child(4)::before{content:"1";}
+  .arch-layer .al-label{font-weight:800; font-size:15px; letter-spacing:-.01em; line-height:1.2; color:#fff;}
+  .arch-layer .al-label .al-k{display:block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:3px;}
   .arch-layer .al-items{display:flex; flex-wrap:wrap; gap:8px;}
-  .arch-chip{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; padding:7px 12px; border-radius:8px; background:var(--cream); border:1px solid var(--border-soft);}
-  .arch-chip.more{color:var(--muted); letter-spacing:.12em;}
-  .arch-layer .al-desc{font-size:13.5px; line-height:1.5; color:var(--ink-soft);}
-  .arch-layer.apps{border-color:var(--accent-orange); box-shadow:0 0 0 2px rgba(255,132,0,.1), var(--shadow);}
+  .arch-chip{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; padding:7px 12px; border-radius:8px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); color:rgba(255,255,255,.92);}
+  .arch-chip.more{color:rgba(255,255,255,.45); letter-spacing:.12em;}
+  .arch-layer .al-desc{font-size:13.5px; line-height:1.5; color:rgba(255,255,255,.8);}
+  /* top of the value chain — what citizens experience */
+  .arch-layer.apps{border-color:rgba(255,132,0,.5); box-shadow:0 0 0 1px rgba(255,132,0,.2), 0 -8px 30px rgba(255,132,0,.05);}
   .arch-layer.apps .al-k{color:var(--accent-orange);}
-  .arch-layer.socle{background:var(--ink); color:#fff; border-color:var(--ink);}
+  /* the Bayes layer — the lit centerpiece, themed with the Bayes dot motif */
+  .arch-layer.socle{overflow:hidden; color:var(--ink); border:1px solid transparent;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,132,0,.15) 1.5px, transparent 1.9px) 0 0/15px 15px,
+      linear-gradient(180deg, #FFFDF7, #F6F0E2);
+    box-shadow:0 0 0 2px var(--accent-orange), 0 14px 44px rgba(255,132,0,.24);}
+  .arch-layer.socle::before{background:var(--accent-orange); border-color:#fff; color:#fff;}
+  .arch-layer.socle .al-label{color:var(--ink); position:relative; z-index:1;}
   .arch-layer.socle .al-k{color:var(--accent-orange);}
-  .arch-layer.socle .al-desc{color:rgba(255,255,255,.85);}
-  .arch-layer.socle .al-desc b{color:#fff;}
+  .arch-layer.socle .al-desc{color:var(--ink-soft); position:relative; z-index:1;}
+  .arch-layer.socle .al-desc b{color:var(--ink);}
+  /* the Bayes mark, faint, bleeding off the right edge — brands the hero layer */
+  .arch-layer.socle .arch-mark{position:absolute; right:-18px; top:50%; transform:translateY(-50%);
+    width:122px; height:122px; color:var(--accent-orange); opacity:.09; pointer-events:none; z-index:0;}
+  /* the ground the stack rests on */
+  .arch-layer:last-child{margin-bottom:8px;}
+  .arch-layer:last-child::after{content:""; position:absolute; left:0; right:0; bottom:-14px; height:7px;
+    background:repeating-linear-gradient(-45deg, rgba(255,255,255,.15) 0 1.5px, transparent 1.5px 7px);
+    -webkit-mask:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);}
 
   /* SRS PDF preview (slide 7) */
   .pdfdoc{position:relative; width:320px; max-width:100%;}
@@ -451,7 +491,9 @@
     .brand-corner::after{width:calc(100vw - 40px);}
     .eyebrow{margin-bottom:14px;} h1.big{font-size:30px;} h2.title{font-size:25px;} .lead{font-size:15.5px;}
     .demo-head{flex-direction:column; align-items:flex-start; gap:3px;} .demo-head h2{font-size:23px;}
+    .arch{padding-left:42px; gap:11px;} .arch::before{left:15px; bottom:26px;} .arch::after{left:10px;}
     .arch-layer{grid-template-columns:1fr; gap:9px; padding:13px 15px;}
+    .arch-layer::before{left:-37px; width:21px; height:21px; font-size:11px;}
     .pipeline{gap:10px;} .pl-arrow{justify-content:center;} .pl-arrow svg{transform:rotate(90deg);}
     .flow{flex-direction:column; align-items:stretch;}
     .flow-arrow{padding:6px 0; justify-content:center;} .flow-arrow svg{transform:rotate(90deg);}
