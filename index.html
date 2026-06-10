@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bayes — Demos</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/logos/bi-colors.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lib/bayes.css" />
+</head>
+<body>
+<main class="splash" id="splash">
+  <img class="splash-logo" src="assets/logos/bi-white.svg" alt="Bayes Impact" />
+  <h1>Bayes&nbsp;·&nbsp;Demos</h1>
+  <p>Démonstrations &amp; présentations interactives de la Bayes Platform.<br/>Interactive demos &amp; presentations of the Bayes Platform.</p>
+  <form class="splash-form" id="gate" autocomplete="off">
+    <input id="code" name="code" type="text" placeholder="Code d'accès · access code" aria-label="access code" autofocus />
+    <button type="submit">→</button>
+  </form>
+  <div class="splash-hint" id="hint"></div>
+  <div class="splash-foot">bayesimpact.org — open-source for the public good</div>
+</main>
+
+<script>
+(function () {
+  // twinkling starfield
+  var sp = document.getElementById("splash");
+  for (var i = 0; i < 90; i++) {
+    var s = document.createElement("span"); s.className = "star";
+    var z = (Math.random() * 1.8 + 0.6).toFixed(1);
+    s.style.cssText = "width:" + z + "px;height:" + z + "px;left:" + (Math.random() * 100).toFixed(2) +
+      "%;top:" + (Math.random() * 100).toFixed(2) + "%;--tw:" + (Math.random() * 3 + 2).toFixed(1) +
+      "s;animation-delay:" + (Math.random() * 3).toFixed(1) + "s";
+    sp.appendChild(s);
+  }
+  // access gate → demos/<slug>/   (security-by-obscurity; the repo is public anyway)
+  var form = document.getElementById("gate"), input = document.getElementById("code"), hint = document.getElementById("hint");
+  function slugify(v) { return (v || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var slug = slugify(input.value);
+    if (!slug) { hint.textContent = "Entrez le code de votre démo · enter your demo code"; return; }
+    hint.textContent = "Ouverture… · opening…";
+    window.location.href = "demos/" + slug + "/";
+  });
+})();
+</script>
+</body>
+</html>

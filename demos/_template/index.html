@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bayes — Template</title>
+<link rel="icon" href="../../assets/logos/bi-colors.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lib/bayes.css" />
+<!-- Per-deck theme overrides (optional): <style>:root{ --accent-orange:#FF8400; }</style> -->
+</head>
+<body>
+
+<!-- brand mark + (optional) flag for a government-service avatar -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bi-mark" viewBox="0 0 415 409">
+    <path d="M309.59,246.07H373a41.67,41.67,0,0,0,0-83.34H309.44l92.73-91.11a41.66,41.66,0,0,0-58.4-59.44l-94.51,92.87V42.23a41.67,41.67,0,1,0-83.34,0v63l-94.86-93A41.66,41.66,0,1,0,12.72,71.65l92.88,91.08H41.89a41.67,41.67,0,0,0,0,83.34h63.56l-92.7,90.72A41.67,41.67,0,1,0,71,396.35l94.89-92.87v63.09a41.67,41.67,0,1,0,83.34,0v-63l94.54,92.71a41.66,41.66,0,0,0,58.34-59.5Z"/>
+    <circle cx="207.59" cy="41.49" r="41.34"/><circle cx="207.59" cy="367.01" r="41.34"/><circle cx="41.37" cy="204.4" r="41.34"/><circle cx="373.76" cy="204.4" r="41.34"/><circle cx="373.52" cy="366.86" r="41.34"/><circle cx="41.34" cy="366.86" r="41.34"/><circle cx="41.34" cy="41.34" r="41.34"/><circle cx="373.52" cy="41.34" r="41.34"/><circle cx="207.57" cy="204.25" r="41.34"/>
+  </symbol>
+</svg>
+
+<div class="progress"><div class="progress-fill" id="pfill"></div></div>
+<div class="dots" id="dots"></div>
+<div class="counter" id="counter">01 / 08</div>
+<div class="hint">← → · space · click · PDF</div>
+
+<main class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide dark cover" id="cover" data-dark>
+    <div class="slide-inner">
+      <div class="cover-mark reveal"><img class="bilogo" src="../../assets/logos/bi-white.svg" alt="Bayes Impact"/></div>
+      <p class="eyebrow reveal"><span data-lang="fr">Présentation · 2026</span><span data-lang="en">Presentation · 2026</span></p>
+      <h1 class="reveal">Bayes Platform</h1>
+      <p class="sub reveal"><span data-lang="fr">La plateforme d'agents IA open-source, pour le service public.</span><span data-lang="en">The open-source AI agent platform, for public services.</span></p>
+      <p class="tagline reveal"><span data-lang="fr">Souveraine, open-source — <em>au service de l'intérêt général.</em></span><span data-lang="en">Sovereign, open-source — <em>built for the public good.</em></span></p>
+    </div>
+    <div class="cover-foot"><span data-lang="fr">Partenaire / Organisation</span><span data-lang="en">Partner / Organization</span><span class="cf-r">Bayes Impact — 2026</span></div>
+  </section>
+
+  <!-- 2 · EARTH (Bayes intro, website-style) -->
+  <section class="slide dark earth" id="earth" data-dark>
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-white.svg" alt="Bayes Impact" style="filter:none"/><span>Bayes Impact</span></div>
+    <div class="slide-inner">
+      <div class="hero believe-box" id="believeBox">
+        <div class="hero-txt">
+          <h1 class="believe"><span data-lang="fr">Nous croyons en un monde où</span><span data-lang="en">We believe in a world where</span><span class="believe-cycle" id="believeCycle"></span></h1>
+          <p class="lead"><span data-lang="fr">L'IA pour aider celles et ceux qui en ont besoin et celles et ceux qui les accompagnent.</span><span data-lang="en">AI to help those in need and those who serve them.</span></p>
+        </div>
+        <div class="hero-planet"><div class="planet-wrap"><img src="../../assets/planet.webp" alt="Earth" /><div class="planet-orbit" id="planetOrbit"></div></div></div>
+      </div>
+    </div>
+    <script type="application/json" class="believe-data">
+    {"fr":["chacun reçoit l'aide dont il a besoin.","chaque citoyen accède aux services publics.","l'administration parle la langue de chacun.","l'IA sert d'abord l'intérêt général."],
+     "en":["everyone receives the help they need.","every citizen can access public services.","the administration speaks everyone's language.","AI serves the public good first."]}
+    </script>
+  </section>
+
+  <!-- 3 · WHO WE ARE (about + stats) -->
+  <section class="slide" id="about">
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-colors.svg" alt="Bayes Impact"/><span><span data-lang="fr">Qui sommes-nous</span><span data-lang="en">Who we are</span></span></div>
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Qui sommes-nous</span><span data-lang="en">Who we are</span></p>
+      <h1 class="big reveal"><span data-lang="fr">L'IA au service de ceux qui en ont besoin et de ceux qui les <em class="hl">aident</em>.</span><span data-lang="en">AI to empower people in need and those who <em class="hl">help</em> them.</span></h1>
+      <p class="lead reveal"><span data-lang="fr">Organisation à but non lucratif fondée dans la Silicon Valley en 2014. Open-source, construite pour l'intérêt général.</span><span data-lang="en">A nonprofit founded in Silicon Valley in 2014. Open-source, built for the public good.</span></p>
+      <div class="chips reveal">
+        <span class="chip"><span class="dot-ok"></span><b>10+</b>&nbsp;<span data-lang="fr">ans</span><span data-lang="en">years</span></span>
+        <span class="chip"><b>3</b>&nbsp;<span data-lang="fr">continents</span><span data-lang="en">continents</span></span>
+        <span class="chip"><b>10M+</b>&nbsp;<span data-lang="fr">bénéficiaires</span><span data-lang="en">beneficiaries</span></span>
+      </div>
+      <div class="partners-grid reveal">
+        <img src="../../assets/partners/google.webp" alt="Google.org" /><img src="../../assets/partners/gates.webp" alt="Gates Foundation" /><img src="../../assets/partners/yc.webp" alt="Y Combinator" /><img src="../../assets/partners/france-travail.webp" alt="France Travail" /><img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · ARGUMENT / USE-CASE (bespoke — vary freely in this section) -->
+  <section class="slide" id="why">
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-colors.svg" alt="Bayes Impact"/><span><span data-lang="fr">La vision</span><span data-lang="en">The vision</span></span></div>
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">La vision</span><span data-lang="en">The vision</span></p>
+      <h2 class="title reveal"><span data-lang="fr">Une plateforme, pas une multitude d'outils isolés.</span><span data-lang="en">One platform, not a patchwork of point tools.</span></h2>
+      <div class="cards c3 reveal">
+        <div class="card"><div class="kicker"><span data-lang="fr">Souveraineté</span><span data-lang="en">Sovereignty</span></div><h3><span data-lang="fr">Vos données restent chez vous</span><span data-lang="en">Your data stays in-house</span></h3><p><span data-lang="fr">Open-source, hébergeable localement.</span><span data-lang="en">Open-source, hostable locally.</span></p></div>
+        <div class="card"><div class="kicker">No-code</div><h3><span data-lang="fr">Vos équipes configurent</span><span data-lang="en">Your teams configure it</span></h3><p><span data-lang="fr">Créez et déployez des agents sans coder.</span><span data-lang="en">Build and deploy agents without code.</span></p></div>
+        <div class="card"><div class="kicker"><span data-lang="fr">Confiance</span><span data-lang="en">Trust</span></div><h3><span data-lang="fr">Fiabilisé (RAG), traçable</span><span data-lang="en">Grounded (RAG), traceable</span></h3><p><span data-lang="fr">Zéro hallucination, sources citées.</span><span data-lang="en">Zero hallucination, sources cited.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · INTERACTIVE DEMO — chat (data-demo + inline JSON script) -->
+  <section class="slide" id="demo-chat" data-demo="chat">
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-colors.svg" alt="Bayes Impact"/><span><span data-lang="fr">Démonstration</span><span data-lang="en">Demo</span></span></div>
+    <div class="slide-inner">
+      <div class="demo-head reveal">
+        <h2><span data-lang="fr">Démonstration — un service sur WhatsApp</span><span data-lang="en">Demo — a service on WhatsApp</span></h2>
+        <div class="demo-controls"><button class="dc-btn dc-toggle">⏸</button><button class="dc-btn ghost dc-replay">↻</button></div>
+      </div>
+      <div class="demo-stage" style="margin-top:12px">
+        <div class="reveal">
+          <div class="srs">
+            <div class="srs-top">
+              <span class="srs-badge"><span data-lang="fr">portail des services publics</span><span data-lang="en">public services portal</span></span>
+              <h3><span data-lang="fr">Demande d'acte d'état civil</span><span data-lang="en">Civil-status certificate request</span></h3>
+              <div class="srs-meta"><span data-lang="fr">État civil · administration</span><span data-lang="en">Civil registry · government</span></div>
+            </div>
+            <div class="srs-body">
+              <div class="bpmn-wrap">
+                <div class="bl"><span data-lang="fr">Parcours du service</span><span data-lang="en">Service journey</span></div>
+                <div class="bpmn">
+                  <span class="bpmn-node"><span data-lang="fr">Demande</span><span data-lang="en">Request</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Authentification</span><span data-lang="en">Auth</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node">OTP</span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Pré-remplissage</span><span data-lang="en">Auto-fill</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Instruction</span><span data-lang="en">Processing</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node">Notification</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="footnote" style="margin-top:14px"><span data-lang="fr">Extensible aux <b>langues locales</b> et au <b>message vocal</b> — un levier d'inclusion.</span><span data-lang="en">Extensible to <b>local languages</b> and <b>voice notes</b> — a key inclusion lever.</span></p>
+        </div>
+        <div class="reveal">
+          <div class="phone"><div class="phone-screen">
+            <div class="notch"></div>
+            <div class="statusbar"><span>9:41</span><span>5G ▮▮▮ ◢ 84%</span></div>
+            <div class="wa-header"><span class="wa-back">‹</span><span class="wa-av"><svg class="mark" style="color:var(--wa-green)"><use href="#bi-mark"/></svg></span><div class="wa-head-txt"><div class="h-name"><span data-lang="fr">Service de l'état civil</span><span data-lang="en">Civil registry service</span></div><div class="h-sub wa-sub"></div></div><div class="wa-icons"><span>📹</span><span>📞</span></div></div>
+            <div class="wa-thread"><div class="wa-day"></div></div>
+            <div class="wa-input"><div class="wa-field"><span>😊</span><span class="ph">Message</span><span>📎</span><span>📷</span></div><span class="wa-mic">🎤</span></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" class="demo-data">
+    {"pay":{"provider":"Mobile Money","host":"pay.gov/"},
+     "fr":[
+      {"type":"in","text":"Bonjour 👋 Je suis l'assistant de l'état civil. Écrivez-moi ou envoyez une note vocale."},
+      {"type":"out","text":"Bonjour, j'ai besoin d'un acte de naissance"},
+      {"type":"in","text":"Avec plaisir. Envoyez votre identifiant national.","bp":1},
+      {"type":"out","text":"23 1204 8473921","digits":true},
+      {"type":"tool","name":"Base état civil","arg":"id: \"23 1204 8473921\"","steps":["Connexion"],"result":"1 citoyen trouvé"},
+      {"type":"in","text":"Vous êtes bien <b>A. Diallo</b>, né(e) le 12/03/1984 ?"},
+      {"type":"out","text":"Oui, c'est bien moi"},
+      {"type":"in","text":"Je vous envoie un code (OTP).","bp":2},
+      {"type":"out","text":"729 014","digits":true},
+      {"type":"tool","name":"Vérification OTP","arg":"otp: \"729 014\"","steps":["Contrôle"],"result":"Vérifié ✓"},
+      {"type":"in","text":"Identité confirmée ✅ Je récupère votre acte.","bp":3},
+      {"type":"fill","src":"Registre d'état civil","rows":[["Nom","Diallo"],["Prénoms","Aïssatou"],["Naissance","12/03/1984"]]},
+      {"type":"voice","dur":"0:05","transcript":"Deux copies s'il vous plaît."},
+      {"type":"in","text":"🎙️ Bien reçu : <b>2 copies</b>."},
+      {"type":"dossier","num":"AN-2026-04827","rows":[["Document","Acte de naissance"],["Copies","2"]],"bp":4},
+      {"type":"in","text":"Réglez les frais via votre lien <b>Mobile Money</b>."},
+      {"type":"paylink","amount":"1 000 FCFA","ref":"Acte de naissance","code":"r/AN-2026-04827"},
+      {"type":"notif","tag":"N04","text":"Paiement de <b>1 000 FCFA</b> confirmé.","bp":5},
+      {"type":"in","text":"Votre demande est enregistrée ✅ Vous recevrez les mises à jour ici."}
+     ],
+     "en":[
+      {"type":"in","text":"Hello 👋 I'm the civil-registry assistant. Write to me or send a voice note."},
+      {"type":"out","text":"Hi, I need a birth certificate"},
+      {"type":"in","text":"Gladly. Send your national ID.","bp":1},
+      {"type":"out","text":"23 1204 8473921","digits":true},
+      {"type":"tool","name":"Civil registry","arg":"id: \"23 1204 8473921\"","steps":["Connect"],"result":"1 citizen found"},
+      {"type":"in","text":"You are <b>A. Diallo</b>, born 12/03/1984 ?"},
+      {"type":"out","text":"Yes, that's me"},
+      {"type":"in","text":"I'm sending you a code (OTP).","bp":2},
+      {"type":"out","text":"729 014","digits":true},
+      {"type":"tool","name":"OTP check","arg":"otp: \"729 014\"","steps":["Check"],"result":"Verified ✓"},
+      {"type":"in","text":"Identity confirmed ✅ Fetching your certificate.","bp":3},
+      {"type":"fill","src":"Civil registry","rows":[["Surname","Diallo"],["Given names","Aïssatou"],["Born","12/03/1984"]]},
+      {"type":"voice","dur":"0:05","transcript":"Two copies please."},
+      {"type":"in","text":"🎙️ Got it: <b>2 copies</b>."},
+      {"type":"dossier","num":"AN-2026-04827","rows":[["Document","Birth certificate"],["Copies","2"]],"bp":4},
+      {"type":"in","text":"Pay the fee via your <b>Mobile Money</b> link."},
+      {"type":"paylink","amount":"1,000 FCFA","ref":"Birth certificate","code":"r/AN-2026-04827"},
+      {"type":"notif","tag":"N04","text":"Payment of <b>1,000 FCFA</b> confirmed.","bp":5},
+      {"type":"in","text":"Your request is registered ✅ You'll get updates here."}
+     ]}
+    </script>
+  </section>
+
+  <!-- 6 · INTERACTIVE DEMO — copilot -->
+  <section class="slide" id="demo-copilot" data-demo="copilot">
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-colors.svg" alt="Bayes Impact"/><span><span data-lang="fr">Démonstration</span><span data-lang="en">Demo</span></span></div>
+    <div class="slide-inner">
+      <div class="demo-head reveal"><h2><span data-lang="fr">Le copilote interne</span><span data-lang="en">The internal copilot</span></h2><span class="dh-sub"><span data-lang="fr">L'agent back-office qui répond en langage naturel, sources à l'appui.</span><span data-lang="en">The back-office agent that answers in natural language, with sources.</span></span></div>
+      <div class="copilot reveal">
+        <div class="cp-bar"><span class="cp-dot r"></span><span class="cp-dot y"></span><span class="cp-dot g"></span><span class="cp-title"><span data-lang="fr">Copilote · recherche documentaire</span><span data-lang="en">Copilot · document search</span></span><span class="cp-live"><span class="cp-live-dot"></span><span data-lang="fr">en direct</span><span data-lang="en">live</span></span><span class="cp-badge">headless</span></div>
+        <div class="cp-body"></div>
+      </div>
+      <div class="pipe-cap reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M4 9l4 4 4-4"/></svg><span data-lang="fr">La donnée derrière le copilote</span><span data-lang="en">The data behind the copilot</span></div>
+      <div class="pipeline reveal">
+        <div class="pl-stage"><div class="pl-label"><span data-lang="fr">1 · Documents</span><span data-lang="en">1 · Documents</span></div><div class="scan-stack"><div class="scan-pg"><i></i><i></i><i style="width:72%"></i><i></i></div><div class="scan-pg"><i></i><i></i><i style="width:72%"></i><i></i></div><div class="scan-pg"><i></i><i></i><i style="width:72%"></i><i></i></div></div></div>
+        <div class="pl-arrow"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="var(--accent-orange)" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="pl-stage agent"><div class="pl-label"><span data-lang="fr">2 · Agent Bayes</span><span data-lang="en">2 · Bayes agent</span></div><div class="extract"><div class="extract-row"><span data-lang="fr">Type</span><span data-lang="en">Type</span><b><span data-lang="fr">Décision</span><span data-lang="en">Ruling</span></b></div><div class="extract-row"><span>Source</span><b><span data-lang="fr">Cour d'appel</span><span data-lang="en">Court</span></b></div><div class="extract-row"><span><span data-lang="fr">Année</span><span data-lang="en">Year</span></span><b>2021</b></div><div class="extract-row"><span><span data-lang="fr">Texte</span><span data-lang="en">Text</span></span><b>OCR ✓</b></div></div><div class="extract-tags"><span data-lang="fr">extraction</span><span data-lang="en">extraction</span><span>·</span><span data-lang="fr">classification</span><span data-lang="en">classification</span></div></div>
+        <div class="pl-arrow"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="var(--accent-orange)" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="pl-stage db"><div class="pl-label"><span data-lang="fr">3 · Base structurée</span><span data-lang="en">3 · Structured DB</span></div><table><tr><th>Réf.</th><th>Type</th><th><span data-lang="fr">Année</span><span data-lang="en">Year</span></th></tr><tr><td>142</td><td><span data-lang="fr">Arrêt</span><span data-lang="en">Ruling</span></td><td>2021</td></tr><tr><td>087</td><td><span data-lang="fr">Jugt</span><span data-lang="en">Judgt</span></td><td>2019</td></tr></table><div class="db-q">▲ <span data-lang="fr">interrogée par le copilote</span><span data-lang="en">queried by the copilot</span></div></div>
+      </div>
+    </div>
+    <script type="application/json" class="demo-data">
+    {"meta":{"who":{"fr":"Agent","en":"Officer"},"search":{"fr":"Recherche · base documentaire","en":"Search · document base"},"name":{"fr":"Copilote","en":"Copilot"}},
+     "fr":[
+      {"q":"Jurisprudence sur la rupture abusive d'un contrat ?","arg":"rupture abusive · depuis 2015","res":"3 décisions","a":"Trois décisions depuis 2015 : la rupture est abusive sans préavis raisonnable.","s":["Cour d'appel · 2021 · n°142","Tribunal · 2019 · n°087"]},
+      {"q":"Délais légaux de la garde à vue ?","arg":"garde à vue · délais","res":"2 textes","a":"48 heures, prolongeable une fois sur autorisation du procureur.","s":["Cour suprême · 2020 · n°208"]}
+     ],
+     "en":[
+      {"q":"Case law on wrongful contract termination?","arg":"wrongful termination · since 2015","res":"3 rulings","a":"Three rulings since 2015: termination is wrongful absent reasonable notice.","s":["Court of appeal · 2021 · no.142","Court · 2019 · no.087"]},
+      {"q":"Legal time limits for police custody?","arg":"custody · limits","res":"2 statutes","a":"48 hours, extendable once with the prosecutor's authorization.","s":["Supreme court · 2020 · no.208"]}
+     ]}
+    </script>
+  </section>
+
+  <!-- 7 · TEAM / SPONSORS -->
+  <section class="slide" id="team">
+    <div class="brand-corner"><img class="bilogo" src="../../assets/logos/bi-colors.svg" alt="Bayes Impact"/><span><span data-lang="fr">L'équipe</span><span data-lang="en">The team</span></span></div>
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Comment nous travaillons</span><span data-lang="en">How we work</span></p>
+      <h2 class="title reveal"><span data-lang="fr">Un partenariat, pas un fournisseur.</span><span data-lang="en">A partnership, not a vendor.</span></h2>
+      <div class="cards c3 reveal">
+        <div class="card"><div class="kicker"><span data-lang="fr">Open-source</span><span data-lang="en">Open-source</span></div><h3><span data-lang="fr">Tech souveraine</span><span data-lang="en">Sovereign tech</span></h3><p><span data-lang="fr">Pas de verrou propriétaire.</span><span data-lang="en">No vendor lock-in.</span></p></div>
+        <div class="card"><div class="kicker"><span data-lang="fr">Transfert</span><span data-lang="en">Transfer</span></div><h3><span data-lang="fr">Montée en compétences</span><span data-lang="en">Skills transfer</span></h3><p><span data-lang="fr">Vos équipes reprennent la main.</span><span data-lang="en">Your teams take over.</span></p></div>
+        <div class="card"><div class="kicker"><span data-lang="fr">Accompagnement</span><span data-lang="en">Support</span></div><h3><span data-lang="fr">Contrat de prestation</span><span data-lang="en">Advisory engagement</span></h3><p><span data-lang="fr">Bayes accompagne, ne verrouille pas.</span><span data-lang="en">Bayes supports, doesn't lock in.</span></p></div>
+      </div>
+      <div class="partners-grid reveal" style="margin-top:34px"><img src="../../assets/partners/google.webp" alt="Google.org" /><img src="../../assets/partners/gates.webp" alt="Gates Foundation" /><img src="../../assets/partners/yc.webp" alt="Y Combinator" /></div>
+    </div>
+  </section>
+
+  <!-- 8 · THANK YOU -->
+  <section class="slide dark cover" id="thanks" data-dark>
+    <div class="slide-inner">
+      <div class="cover-mark reveal"><img class="bilogo" src="../../assets/logos/bi-white.svg" alt="Bayes Impact"/></div>
+      <h1 class="reveal" style="font-size:clamp(40px,6.5vw,92px);line-height:1;letter-spacing:-.035em;margin:0"><span data-lang="fr">Merci.</span><span data-lang="en">Thank you.</span></h1>
+      <p class="tagline reveal" style="margin-top:36px;font-size:clamp(18px,2vw,26px)"><span data-lang="fr">Construisons-le ensemble.</span><span data-lang="en">Let's build it together.</span></p>
+    </div>
+    <div class="cover-foot"><span>bayesimpact.org</span><span class="cf-r">Bayes Impact</span></div>
+  </section>
+
+</main>
+
+<script src="../../lib/bayes.js"></script>
+</body>
+</html>
