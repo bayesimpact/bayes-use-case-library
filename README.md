@@ -35,7 +35,7 @@ python3 -m http.server 8016
 ```
 
 Then commit & push — it goes live at
-`https://bayesimpact.github.io/bayes-use-case-library/demos/<slug>/`.
+`https://bayesimpact.github.io/use-case-library/demos/<slug>/`.
 
 ## Layout
 
