@@ -25,8 +25,8 @@ continents** (Europe, North America, Africa). **10M+ people served.** Funders & 
 Veterans Affairs**. **Open-source**, **for the public good** — not a vendor.
 
 **Mission — the line everything ladders up to:**
-> *L'IA pour aider celles et ceux qui en ont besoin — et celles et ceux qui les accompagnent.*
-> *AI to empower people in need — and those who serve them.*
+> *L'IA pour aider celles et ceux qui en ont besoin, et celles et ceux qui les accompagnent.*
+> *AI to empower people in need and those who help them.*
 
 **The Bayes Platform** — our product: an **open-source platform of AI agents for public services**.
 What's distinctive, and what backs the claim that we are *the* AI platform **purpose-built for public
@@ -72,6 +72,11 @@ active state. **Emphasis is the gold marker-highlight**, never orange text:
 ```
 On **dark** slides, `em.hl` becomes a soft translucent-gold marker automatically; the earth's cycling
 phrase uses the same warm gold. **Do not** set big headlines or fills in orange.
+
+**No em dashes in copy.** The website doesn't use them and neither do we. Avoid `—` wherever possible
+in user-facing deck text (FR + EN). Use a comma, a period (two short sentences), a colon, or
+parentheses instead. `·` middots and `→` arrows for lists/flows are fine; the ban is specifically the
+`—` em dash as a prose connector.
 
 **Chrome is automatic — never add it.** `bayes.js` injects:
 - a **top nav** matching the site — translucent/blurred, with the **Bayes logo (backlink to
