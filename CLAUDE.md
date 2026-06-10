@@ -134,12 +134,15 @@ one in with a placeholder; `bayes.js` swaps it for the real `<section>` at load:
   while every other deck shares the generic one.)
 
 **Available shared slides:** `earth` (vision hero) · `about` (who we are) · `platform-overview` ·
-`platform-studio` (no-code + the bias-incident) · `platform-observability` · `platform-compliance`
-(MCP/sandbox) · `platform-evaluation` (human review) · `closing` (thank-you).
+`platform-grounding` (the MCP point as a simple before/after: generic LLM vs grounded-in-your-
+protocols — the health example) · `platform-sources` (your documents + indexing status, RAG) ·
+`platform-studio` (no-code + the bias-incident) · `platform-compliance` (MCP/sandbox) ·
+`platform-observability` · `platform-evaluation` (human review) · `closing` (thank-you).
 
-The five `platform-*` slides are the **optional Bayes Platform showcase** — include the ones that
-fit the story, delete the rest. They are **generic**: never paste a real customer's workspace,
-document names, or metrics into them.
+The `platform-*` slides are the **optional Bayes Platform showcase** — each is the visual
+*illustration* of a claim (grounding, sources, no-code, protocols, observability, review). Include
+the ones that fit the story, delete the rest. They are **generic**: never paste a real customer's
+workspace, document names, or metrics into them.
 
 `<body>` carries the shared config: `data-assets` (asset base path), `data-logo` / `data-logo-dark`
 (nav + per-page PDF mark), `data-label-fr` / `data-label-en` (the nav section label).
