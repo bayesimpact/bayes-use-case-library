@@ -84,8 +84,11 @@ phrase uses the same warm gold. **Do not** set big headlines or fills in orange.
 `<em class="hl">` · `.cards.c3`+`.card`(+`.kicker`) · `.chips`/`.chip` · `.split` (2-col) ·
 `.cover` (title/closing) · `.partners-grid` (funder logos). **Platform mockups:** `.win`
 (product-window frame) · `.agent-grid`/`.agent-card` · `.metric`/`.bars`/`.topic` · `.incident`
-(cautionary callout) · `.conn-map`/`.conn-node`/`.guard` · `.review-q`/`.rq`. The two **demos**
-(§6) are their own blocks.
+(cautionary callout) · `.conn-map`/`.conn-node`/`.guard` · `.review-q`/`.rq` · `.arch`/`.arch-layer`
+(the layered **sovereign stack** — put `class="slide dark arch-slide" data-dark` on the section; it
+reads bottom-up via an upward axis + step badges numbered from the ground, and the Bayes-Platform
+layer, `.arch-layer.socle`, is the lit cream centerpiece with the `#bi-mark` watermark). The two
+**demos** (§6) are their own blocks.
 
 **Re-theme one deck** (rare): an inline `<style>:root{ --accent-orange:#0A7E5A; }</style>` in its
 `<head>`. Never edit the shared CSS for one deck.
@@ -107,6 +110,8 @@ bayes-use-case-library/
 
 Two content types share the system: **website-linkable demo pages** (a focused interactive
 showcase) and **partner decks** (intro → vision → use cases → demos → platform → team → thanks).
+`demos/bayes/` is the **generic cold-share deck** (Bayes + platform, no partner context) — point
+people there when there's no specific engagement yet.
 
 ---
 
@@ -133,8 +138,9 @@ one in with a placeholder; `bayes.js` swaps it for the real `<section>` at load:
   `<section>` instead.** (This is exactly how the Togo deck keeps its bespoke GouvAI-specific cover
   while every other deck shares the generic one.)
 
-**Available shared slides:** `earth` (vision hero) · `context` (partner / meeting context, position
-3 in partner decks — omitted from the generic Bayes deck) · `about` (who we are) ·
+**Available shared slides:** `cover` (title hero — customise via opts, or write your own `<section>`
+to override) · `earth` (vision hero) · `context` (partner / meeting context, position 3 in partner
+decks — omitted from the generic Bayes deck) · `about` (who we are) ·
 `platform-overview` · `platform-grounding` (the MCP point as a simple before/after: generic LLM vs
 grounded-in-your-protocols — the health example) · `platform-sources` (your documents + indexing
 status, RAG) · `platform-studio` (no-code + the bias-incident) · `platform-compliance`
@@ -156,17 +162,21 @@ workspace, document names, or metrics into them.
 The Bayes narrative spine. Keep the bookends; **the use-case middle varies a lot — don't templatize
 it.** A deck runs ~8–14 slides, one idea each.
 
-1. **Cover** (bespoke) — title, one-line pitch, partner/org name.
+1. **Cover** (`data-shared="cover"`, customise via opts — or override with your own `<section>`, as
+   Togo does) — title, one-line pitch, partner/org name.
 2. **Earth hero** (`data-shared="earth"`) — "We believe in a world where __" over the living planet.
    Our signature; keep it second. Living Earth + starfield + faint orbit, *quiet* glow.
-3. **Who we are** (`data-shared="about"`) — mission + credibility + funder logos.
-4. **Arguments & use cases** — *the bespoke middle.* Problem, the offer (3 pillars in `.cards.c3`),
-   one slide per sector/use case, the trust story. **Shape freely** — a hospital deck ≠ a ministry
-   deck here.
-5. **Interactive demos** — the proof. At least one of the two engines (§6); often both.
-6. **Platform showcase** (the optional `platform-*` shared slides) — include what's relevant.
-7. **Team / sponsors / how we work** (bespoke) — the partnership.
-8. **Thank-you** (`data-shared="closing"`).
+3. **Context** (`data-shared="context"`, *optional*) — partner · country · date + the meeting/project
+   theme. Position 3 in a partner deck; **delete it** from a cold/generic deck (the `demos/bayes/` one
+   has no context slide).
+4. **Who we are** (`data-shared="about"`) — mission + credibility + funder logos.
+5. **Arguments & use cases** — *the bespoke middle.* Problem, the offer (3 pillars in `.cards.c3`),
+   one slide per sector/use case, the trust story (a layered-architecture `.arch` slide fits here for
+   government decks). **Shape freely** — a hospital deck ≠ a ministry deck here.
+6. **Interactive demos** — the proof. At least one of the two engines (§6); often both.
+7. **Platform showcase** (the optional `platform-*` shared slides) — include what's relevant.
+8. **Team / sponsors / how we work** (bespoke) — the partnership.
+9. **Thank-you** (`data-shared="closing"`).
 
 `demos/_template/index.html` is exactly this, maximalist (every shared slide present). Start there
 and delete down.
@@ -265,7 +275,7 @@ gate (the repo is public — security-by-obscurity only). Mark genuinely confide
 ---
 
 ### TL;DR
-Copy `demos/_template/`, **delete the shared slides you don't need**, customise the ones you keep,
-rewrite the cover + use-case middle + the two demo JSONs. Keep every string **FR+EN**, keep the
+Copy `demos/_template/`, **delete the shared slides you don't need**, customise the ones you keep
+(cover + context via opts), rewrite the use-case middle + the two demo JSONs. Keep every string **FR+EN**, keep the
 **gold-marker emphasis (orange is only punctuation)**, keep the earth hero. Verify **desktop +
 mobile + PDF**, push, share the URL. Sound like Bayes. Be honest about what's a demo.
