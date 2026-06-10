@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Bayes Platform</title>
+<link rel="icon" href="../../assets/logos/bi-colors.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../lib/bayes.css" />
+</head>
+<body
+  data-assets="../../assets/"
+  data-logo="../../assets/logos/bi-colors.svg"
+  data-logo-dark="../../assets/logos/bi-white.svg"
+  data-label-fr="LA BAYES PLATFORM"
+  data-label-en="THE BAYES PLATFORM">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bi-mark" viewBox="0 0 415 409">
+    <path d="M309.59,246.07H373a41.67,41.67,0,0,0,0-83.34H309.44l92.73-91.11a41.66,41.66,0,0,0-58.4-59.44l-94.51,92.87V42.23a41.67,41.67,0,1,0-83.34,0v63l-94.86-93A41.66,41.66,0,1,0,12.72,71.65l92.88,91.08H41.89a41.67,41.67,0,0,0,0,83.34h63.56l-92.7,90.72A41.67,41.67,0,1,0,71,396.35l94.89-92.87v63.09a41.67,41.67,0,1,0,83.34,0v-63l94.54,92.71a41.66,41.66,0,0,0,58.34-59.5Z"/>
+    <circle cx="207.59" cy="41.49" r="41.34"/><circle cx="207.59" cy="367.01" r="41.34"/><circle cx="41.37" cy="204.4" r="41.34"/><circle cx="373.76" cy="204.4" r="41.34"/><circle cx="373.52" cy="366.86" r="41.34"/><circle cx="41.34" cy="366.86" r="41.34"/><circle cx="41.34" cy="41.34" r="41.34"/><circle cx="373.52" cy="41.34" r="41.34"/><circle cx="207.57" cy="204.25" r="41.34"/>
+  </symbol>
+</svg>
+
+<div class="progress"><div class="progress-fill" id="pfill"></div></div>
+<div class="dots" id="dots"></div>
+<div class="counter" id="counter">01 / 01</div>
+<div class="hint">← → · space · click</div>
+
+<main class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide dark cover" id="cover" data-dark>
+    <div class="slide-inner">
+      <div class="cover-mark reveal"><img class="bilogo" src="../../assets/logos/bi-white.svg" alt="Bayes Impact"/></div>
+      <p class="eyebrow reveal"><span data-lang="fr">Présentation · 2026</span><span data-lang="en">Presentation · 2026</span></p>
+      <h1 class="reveal">Bayes Platform</h1>
+      <p class="sub reveal"><span data-lang="fr">La plateforme d'agents IA open-source, pour le service public.</span><span data-lang="en">The open-source AI agent platform, for public services.</span></p>
+      <p class="tagline reveal"><span data-lang="fr">Souveraine, open-source — <em>au service de l'intérêt général.</em></span><span data-lang="en">Sovereign, open-source — <em>built for the public good.</em></span></p>
+    </div>
+    <div class="cover-foot"><span>bayesimpact.org</span><span class="cf-r">Bayes Impact — 2026</span></div>
+  </section>
+
+  <!-- 2 · EARTH — the vision -->
+  <div data-shared="earth"></div>
+
+  <!-- 3 · WHO WE ARE -->
+  <div data-shared="about"></div>
+
+  <!-- 4 · THE PLATFORM — overview -->
+  <div data-shared="platform-overview"></div>
+
+  <!-- 5 · DEMO — what it looks like in practice -->
+  <section class="slide" id="demo-chat" data-demo="chat">
+    <div class="slide-inner">
+      <div class="demo-head reveal">
+        <h2><span data-lang="fr">En pratique — un service accessible sur WhatsApp</span><span data-lang="en">In practice — a service on WhatsApp</span></h2>
+        <div class="demo-controls"><button class="dc-btn dc-toggle">⏸</button><button class="dc-btn ghost dc-replay">↻</button></div>
+      </div>
+      <div class="demo-stage" style="margin-top:12px">
+        <div class="reveal">
+          <div class="srs">
+            <div class="srs-top">
+              <span class="srs-badge"><span data-lang="fr">portail des services publics</span><span data-lang="en">public services portal</span></span>
+              <h3><span data-lang="fr">Demande d'acte d'état civil</span><span data-lang="en">Civil-status certificate request</span></h3>
+              <div class="srs-meta"><span data-lang="fr">État civil · administration</span><span data-lang="en">Civil registry · government</span></div>
+            </div>
+            <div class="srs-body">
+              <div class="bpmn-wrap">
+                <div class="bl"><span data-lang="fr">Parcours du service</span><span data-lang="en">Service journey</span></div>
+                <div class="bpmn">
+                  <span class="bpmn-node"><span data-lang="fr">Demande</span><span data-lang="en">Request</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Authentification</span><span data-lang="en">Auth</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node">OTP</span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Pré-remplissage</span><span data-lang="en">Auto-fill</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node"><span data-lang="fr">Instruction</span><span data-lang="en">Processing</span></span><span class="bpmn-c">›</span>
+                  <span class="bpmn-node">Notification</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="footnote" style="margin-top:14px"><span data-lang="fr">Extensible aux <b>langues locales</b> et au <b>message vocal</b> — un levier d'inclusion.</span><span data-lang="en">Extensible to <b>local languages</b> and <b>voice notes</b> — a key inclusion lever.</span></p>
+        </div>
+        <div class="reveal">
+          <div class="phone"><div class="phone-screen">
+            <div class="notch"></div>
+            <div class="statusbar"><span>9:41</span><span>5G ▮▮▮ ◢ 84%</span></div>
+            <div class="wa-header"><span class="wa-back">‹</span><span class="wa-av"><svg class="mark" style="color:var(--wa-green)"><use href="#bi-mark"/></svg></span><div class="wa-head-txt"><div class="h-name"><span data-lang="fr">Service de l'état civil</span><span data-lang="en">Civil registry service</span></div><div class="h-sub wa-sub"></div></div><div class="wa-icons"><span>📹</span><span>📞</span></div></div>
+            <div class="wa-thread"><div class="wa-day"></div></div>
+            <div class="wa-input"><div class="wa-field"><span>😊</span><span class="ph">Message</span><span>📎</span><span>📷</span></div><span class="wa-mic">🎤</span></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" class="demo-data">
+    {"pay":{"provider":"Mobile Money","host":"pay.gov/"},
+     "fr":[
+      {"type":"in","text":"Bonjour 👋 Je suis l'assistant de l'état civil. Écrivez-moi ou envoyez une note vocale."},
+      {"type":"out","text":"Bonjour, j'ai besoin d'un acte de naissance"},
+      {"type":"in","text":"Avec plaisir. Envoyez votre identifiant national.","bp":1},
+      {"type":"out","text":"23 1204 8473921","digits":true},
+      {"type":"tool","name":"Base état civil","arg":"id: \"23 1204 8473921\"","steps":["Connexion"],"result":"1 citoyen trouvé"},
+      {"type":"in","text":"Vous êtes bien <b>A. Diallo</b>, né(e) le 12/03/1984 ?"},
+      {"type":"out","text":"Oui, c'est bien moi"},
+      {"type":"in","text":"Je vous envoie un code (OTP).","bp":2},
+      {"type":"out","text":"729 014","digits":true},
+      {"type":"tool","name":"Vérification OTP","arg":"otp: \"729 014\"","steps":["Contrôle"],"result":"Vérifié ✓"},
+      {"type":"in","text":"Identité confirmée ✅ Je récupère votre acte.","bp":3},
+      {"type":"fill","src":"Registre d'état civil","rows":[["Nom","Diallo"],["Prénoms","Aïssatou"],["Naissance","12/03/1984"]]},
+      {"type":"voice","dur":"0:05","transcript":"Deux copies s'il vous plaît."},
+      {"type":"in","text":"🎙️ Bien reçu : <b>2 copies</b>."},
+      {"type":"dossier","num":"AN-2026-04827","rows":[["Document","Acte de naissance"],["Copies","2"]],"bp":4},
+      {"type":"in","text":"Réglez les frais via votre lien <b>Mobile Money</b>."},
+      {"type":"paylink","amount":"1 000 FCFA","ref":"Acte de naissance","code":"r/AN-2026-04827"},
+      {"type":"notif","tag":"N04","text":"Paiement de <b>1 000 FCFA</b> confirmé.","bp":5},
+      {"type":"in","text":"Votre demande est enregistrée ✅ Vous recevrez les mises à jour ici."}
+     ],
+     "en":[
+      {"type":"in","text":"Hello 👋 I'm the civil-registry assistant. Write to me or send a voice note."},
+      {"type":"out","text":"Hi, I need a birth certificate"},
+      {"type":"in","text":"Gladly. Send your national ID.","bp":1},
+      {"type":"out","text":"23 1204 8473921","digits":true},
+      {"type":"tool","name":"Civil registry","arg":"id: \"23 1204 8473921\"","steps":["Connect"],"result":"1 citizen found"},
+      {"type":"in","text":"You are <b>A. Diallo</b>, born 12/03/1984 ?"},
+      {"type":"out","text":"Yes, that's me"},
+      {"type":"in","text":"I'm sending you a code (OTP).","bp":2},
+      {"type":"out","text":"729 014","digits":true},
+      {"type":"tool","name":"OTP check","arg":"otp: \"729 014\"","steps":["Check"],"result":"Verified ✓"},
+      {"type":"in","text":"Identity confirmed ✅ Fetching your certificate.","bp":3},
+      {"type":"fill","src":"Civil registry","rows":[["Surname","Diallo"],["Given names","Aïssatou"],["Born","12/03/1984"]]},
+      {"type":"voice","dur":"0:05","transcript":"Two copies please."},
+      {"type":"in","text":"🎙️ Got it: <b>2 copies</b>."},
+      {"type":"dossier","num":"AN-2026-04827","rows":[["Document","Birth certificate"],["Copies","2"]],"bp":4},
+      {"type":"in","text":"Pay the fee via your <b>Mobile Money</b> link."},
+      {"type":"paylink","amount":"1,000 FCFA","ref":"Birth certificate","code":"r/AN-2026-04827"},
+      {"type":"notif","tag":"N04","text":"Payment of <b>1,000 FCFA</b> confirmed.","bp":5},
+      {"type":"in","text":"Your request is registered ✅ You'll get updates here."}
+     ]}
+    </script>
+  </section>
+
+  <!-- 6–12 · PLATFORM SHOWCASE -->
+  <div data-shared="platform-grounding"></div>
+  <div data-shared="platform-sources"></div>
+  <div data-shared="platform-studio"></div>
+  <div data-shared="platform-compliance"></div>
+  <div data-shared="platform-observability"></div>
+  <div data-shared="platform-evaluation"></div>
+
+  <!-- 13 · HOW WE WORK -->
+  <section class="slide" id="partnership">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">COMMENT NOUS TRAVAILLONS</span><span data-lang="en">HOW WE WORK</span></p>
+      <h2 class="title reveal"><span data-lang="fr">Un partenariat, <em class="hl">pas un fournisseur</em>.</span><span data-lang="en">A partnership, <em class="hl">not a vendor</em>.</span></h2>
+      <div class="cards c3 reveal">
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">OPEN-SOURCE</span><span data-lang="en">OPEN-SOURCE</span></div>
+          <h3><span data-lang="fr">Aucun verrou propriétaire</span><span data-lang="en">No vendor lock-in</span></h3>
+          <p><span data-lang="fr">Le code vous appartient. Déployez, modifiez, reprenez en main à tout moment.</span><span data-lang="en">The code is yours. Deploy, modify, take over at any time.</span></p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">TRANSFERT</span><span data-lang="en">TRANSFER</span></div>
+          <h3><span data-lang="fr">Montée en compétences</span><span data-lang="en">Skills transfer</span></h3>
+          <p><span data-lang="fr">Vos équipes métier et techniques prennent la main. Bayes forme et accompagne.</span><span data-lang="en">Your business and technical teams take over. Bayes trains and supports.</span></p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">MISSION</span><span data-lang="en">MISSION</span></div>
+          <h3><span data-lang="fr">Alignés sur l'intérêt général</span><span data-lang="en">Aligned with the public good</span></h3>
+          <p><span data-lang="fr">Organisation à but non lucratif — nos intérêts sont les vôtres, pas ceux d'actionnaires.</span><span data-lang="en">Nonprofit — our interests are yours, not shareholders'.</span></p>
+        </div>
+      </div>
+      <div class="partners-grid reveal" style="margin-top:34px">
+        <img src="../../assets/partners/google.webp" alt="Google.org" />
+        <img src="../../assets/partners/gates.webp" alt="Gates Foundation" />
+        <img src="../../assets/partners/yc.webp" alt="Y Combinator" />
+        <img src="../../assets/partners/france-travail.webp" alt="France Travail" />
+        <img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · CLOSING -->
+  <div data-shared="closing"></div>
+
+</main>
+
+<script src="../../lib/bayes-slides.js"></script>
+<script src="../../lib/bayes.js"></script>
+</body>
+</html>

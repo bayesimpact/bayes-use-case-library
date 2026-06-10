@@ -133,11 +133,13 @@ one in with a placeholder; `bayes.js` swaps it for the real `<section>` at load:
   `<section>` instead.** (This is exactly how the Togo deck keeps its bespoke GouvAI-specific cover
   while every other deck shares the generic one.)
 
-**Available shared slides:** `earth` (vision hero) · `about` (who we are) · `platform-overview` ·
-`platform-grounding` (the MCP point as a simple before/after: generic LLM vs grounded-in-your-
-protocols — the health example) · `platform-sources` (your documents + indexing status, RAG) ·
-`platform-studio` (no-code + the bias-incident) · `platform-compliance` (MCP/sandbox) ·
-`platform-observability` · `platform-evaluation` (human review) · `closing` (thank-you).
+**Available shared slides:** `earth` (vision hero) · `context` (partner / meeting context, position
+3 in partner decks — omitted from the generic Bayes deck) · `about` (who we are) ·
+`platform-overview` · `platform-grounding` (the MCP point as a simple before/after: generic LLM vs
+grounded-in-your-protocols — the health example) · `platform-sources` (your documents + indexing
+status, RAG) · `platform-studio` (no-code + the bias-incident) · `platform-compliance`
+(MCP/sandbox) · `platform-observability` · `platform-evaluation` (human review) · `closing`
+(thank-you).
 
 The `platform-*` slides are the **optional Bayes Platform showcase** — each is the visual
 *illustration* of a claim (grounding, sources, no-code, protocols, observability, review). Include

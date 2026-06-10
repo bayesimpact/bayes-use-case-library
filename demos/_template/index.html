@@ -42,8 +42,9 @@
        • <div data-shared="name"></div>         pulls a canonical Bayes slide from
          lib/bayes-slides.js (edit there → every deck updates). Customise with an inner
          <script type="application/json">{…opts…}</script>; override by writing your own
-         <section> instead. Available: earth · about · platform-overview · platform-studio
-         · platform-observability · platform-compliance · platform-evaluation · closing.
+         <section> instead. Available: earth · context · about · platform-overview ·
+         platform-grounding · platform-sources · platform-studio · platform-observability
+         · platform-compliance · platform-evaluation · closing.
        • The COVER, the use-case middle and the two demos below are BESPOKE — rewrite them
          for your brief. Keep every string FR + EN.  Delete any slide you don't need.
        ════════════════════════════════════════════════════════════════════ -->
@@ -70,10 +71,25 @@
     </script>
   </div>
 
-  <!-- 3 · WHO WE ARE (shared — identical across decks) -->
+  <!-- 3 · CONTEXT (optional — partner / meeting specific; delete if not needed) -->
+  <div data-shared="context">
+    <script type="application/json">
+    { "partner": {"fr": "Ministère de …", "en": "Ministry of …"},
+      "country": {"fr": "Pays", "en": "Country"},
+      "date": "Juin 2026",
+      "theme": {"fr": "Titre du projet ou de la réunion", "en": "Project or meeting title"},
+      "bullets": [
+        {"fr": "Démo interactive — le parcours citoyen", "en": "Interactive demo — the citizen journey"},
+        {"fr": "Présentation de la Bayes Platform", "en": "Bayes Platform overview"},
+        {"fr": "Questions & discussion", "en": "Q&A & discussion"}
+      ] }
+    </script>
+  </div>
+
+  <!-- 4 · WHO WE ARE (shared — identical across decks) -->
   <div data-shared="about"></div>
 
-  <!-- 4 · ARGUMENT / VISION (bespoke — this is the part that varies most; reshape it) -->
+  <!-- 5 · ARGUMENT / VISION (bespoke — this is the part that varies most; reshape it) -->
   <section class="slide" id="why">
     <div class="slide-inner">
       <p class="eyebrow reveal"><span data-lang="fr">La vision</span><span data-lang="en">The vision</span></p>
