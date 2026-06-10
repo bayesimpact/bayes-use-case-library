@@ -546,20 +546,26 @@
   .pdf-btn:hover{ transform:translateY(-1px); border-color:var(--ink); }
   @media (max-width:760px){ .pdf-btn{ display:none; } }
 
-  /* ---- Splash (landing gate) ---- */
-  .splash{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:22px; padding:40px 24px; background:radial-gradient(70% 90% at 50% 30%, rgba(40,76,150,.28) 0%, transparent 60%), radial-gradient(130% 130% at 50% 30%, #0a1426 0%, #060b18 45%, #02040a 100%); color:#fff; position:relative; overflow:hidden; }
-  .splash .star{ position:absolute; background:#fff; border-radius:50%; opacity:.5; animation:twinkle var(--tw,3s) ease-in-out infinite; }
-  .splash-logo{ height:34px; z-index:1; }
-  .splash h1{ z-index:1; font-size:clamp(30px,5vw,56px); font-weight:900; letter-spacing:-.03em; margin:0; max-width:18ch; }
-  .splash p{ z-index:1; color:rgba(255,255,255,.75); font-size:clamp(15px,1.6vw,19px); margin:0; max-width:46ch; }
-  .splash-form{ z-index:1; display:flex; gap:8px; margin-top:8px; width:min(440px,86vw); }
-  .splash-form input{ flex:1; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.06); color:#fff; border-radius:999px; padding:13px 18px; font-size:15px; font-family:inherit; outline:none; }
-  .splash-form input::placeholder{ color:rgba(255,255,255,.45); }
-  .splash-form input:focus{ border-color:rgba(255,255,255,.55); }
-  .splash-form button{ border:1px solid #fff; background:#fff; color:var(--ink); border-radius:999px; padding:13px 22px; font-weight:700; font-size:15px; cursor:pointer; font-family:inherit; transition:transform .15s ease; }
-  .splash-form button:hover{ transform:translateY(-1px); }
-  .splash-hint{ z-index:1; font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(255,255,255,.45); min-height:1.2em; }
-  .splash-foot{ position:absolute; bottom:22px; z-index:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:rgba(255,255,255,.4); letter-spacing:.06em; }
+  /* ---- Splash (landing gate) — warm, on the Bayes design system ---- */
+  .splash{ min-height:100vh; display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+           padding:96px clamp(28px,8vw,120px); position:relative; overflow:hidden;
+           background:radial-gradient(58% 70% at 82% 30%, rgba(255,132,0,.05) 0%, transparent 55%), radial-gradient(60% 60% at 12% 88%, rgba(16,103,254,.045) 0%, transparent 60%), var(--bg); }
+  .splash-orbit{ position:absolute; right:-8%; top:50%; transform:translateY(-50%); width:min(620px,52vw); aspect-ratio:1; pointer-events:none; z-index:0; opacity:.9; }
+  .splash-orbit .oring{ position:absolute; inset:0; border-radius:50%; transform-origin:center; }
+  .splash-orbit .odot{ position:absolute; width:4px; height:4px; margin:-2px 0 0 -2px; border-radius:50%; background:var(--accent-orange); opacity:.5; }
+  .splash-orbit .oring:nth-child(2) .odot{ background:var(--accent-blue); }
+  .splash-eyebrow{ z-index:1; }
+  .splash h1{ z-index:1; font-size:clamp(34px,5.4vw,62px); line-height:1.04; font-weight:800; letter-spacing:-.03em; margin:0 0 18px; max-width:16ch; color:var(--ink); }
+  .splash p{ z-index:1; color:var(--ink-soft); font-size:clamp(16px,1.6vw,20px); margin:0 0 30px; max-width:44ch; line-height:1.5; }
+  .splash-form{ z-index:1; display:flex; gap:10px; width:min(460px,90vw); }
+  .splash-form input{ flex:1; border:1px solid var(--border-soft); background:var(--card); color:var(--ink); border-radius:999px; padding:14px 20px; font-size:15px; font-family:inherit; outline:none; box-shadow:var(--shadow); transition:border-color .15s ease; }
+  .splash-form input::placeholder{ color:var(--muted); }
+  .splash-form input:focus{ border-color:var(--ink); }
+  .splash-form button{ border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:999px; padding:14px 24px; font-weight:700; font-size:18px; line-height:1; cursor:pointer; font-family:inherit; transition:transform .15s ease, box-shadow .15s ease; }
+  .splash-form button:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.18); }
+  .splash-hint{ z-index:1; margin-top:16px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted); min-height:1.2em; letter-spacing:.02em; }
+  .splash-foot{ position:absolute; left:clamp(28px,8vw,120px); bottom:34px; z-index:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:.06em; }
+  @media (max-width:760px){ .splash{ padding:88px 22px 64px; } .splash-orbit{ opacity:.4; right:-30%; } .splash-foot{ left:22px; } }
 
   /* ============================================================
      PLATFORM SLIDES — reusable "product window" + mockup primitives

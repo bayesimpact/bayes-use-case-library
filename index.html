@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" data-lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bayes — Demos</title>
+<title>Bayes Impact</title>
 <meta name="robots" content="noindex" />
 <link rel="icon" href="assets/logos/bi-colors.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,38 +11,91 @@
 <link rel="stylesheet" href="lib/bayes.css" />
 </head>
 <body>
+
+<!-- top nav — same chrome as the decks (logo backlink + language switcher) -->
+<nav class="nav">
+  <a class="nav-home" href="https://www.bayesimpact.org" target="_blank" rel="noopener" title="bayesimpact.org">
+    <img src="assets/logos/bi-colors.svg" alt="Bayes Impact" />
+  </a>
+  <div class="nav-spacer"></div>
+  <a class="nav-back" href="https://www.bayesimpact.org" target="_blank" rel="noopener">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.5 9 4 6l3.5-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>bayesimpact.org</span>
+  </a>
+  <div class="nav-btn lang-toggle" id="langToggle" tabindex="0" aria-label="Language">
+    <svg class="lang-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span class="lang-current" id="langCur">FR</span>
+    <svg class="lang-chevron" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="lang-menu" role="menu">
+      <button type="button" data-l="fr" class="active">Français</button>
+      <button type="button" data-l="en">English</button>
+    </div>
+  </div>
+</nav>
+
 <main class="splash" id="splash">
-  <img class="splash-logo" src="assets/logos/bi-white.svg" alt="Bayes Impact" />
-  <h1>Bayes&nbsp;·&nbsp;Demos</h1>
-  <p>Démonstrations &amp; présentations interactives de la Bayes Platform.<br/>Interactive demos &amp; presentations of the Bayes Platform.</p>
+  <div class="splash-orbit" id="splashOrbit"></div>
+  <p class="eyebrow splash-eyebrow"><span data-lang="fr">Bayes Impact</span><span data-lang="en">Bayes Impact</span></p>
+  <h1>
+    <span data-lang="fr">Voir la Bayes Platform <em class="hl">en action</em>.</span>
+    <span data-lang="en">See the Bayes Platform <em class="hl">in action</em>.</span>
+  </h1>
+  <p>
+    <span data-lang="fr">Entrez le code d'accès de votre présentation.</span>
+    <span data-lang="en">Enter your presentation's access code.</span>
+  </p>
   <form class="splash-form" id="gate" autocomplete="off">
-    <input id="code" name="code" type="text" placeholder="Code d'accès · access code" aria-label="access code" autofocus />
-    <button type="submit">→</button>
+    <input id="code" name="code" type="text" aria-label="access code" autofocus />
+    <button type="submit" aria-label="Open">→</button>
   </form>
   <div class="splash-hint" id="hint"></div>
-  <div class="splash-foot">bayesimpact.org — open-source for the public good</div>
+  <div class="splash-foot">bayesimpact.org · <span data-lang="fr">open-source, pour l'intérêt général</span><span data-lang="en">open-source, for the public good</span></div>
 </main>
 
 <script>
 (function () {
-  // twinkling starfield
-  var sp = document.getElementById("splash");
-  for (var i = 0; i < 90; i++) {
-    var s = document.createElement("span"); s.className = "star";
-    var z = (Math.random() * 1.8 + 0.6).toFixed(1);
-    s.style.cssText = "width:" + z + "px;height:" + z + "px;left:" + (Math.random() * 100).toFixed(2) +
-      "%;top:" + (Math.random() * 100).toFixed(2) + "%;--tw:" + (Math.random() * 3 + 2).toFixed(1) +
-      "s;animation-delay:" + (Math.random() * 3).toFixed(1) + "s";
-    sp.appendChild(s);
+  var html = document.documentElement, curEl = document.getElementById("langCur");
+  var input = document.getElementById("code"), hint = document.getElementById("hint");
+  var PH = { fr: "Code d'accès", en: "Access code" };
+  function setLang(l) {
+    html.setAttribute("data-lang", l);
+    try { localStorage.setItem("bayesLang", l); } catch (e) {}
+    curEl.textContent = l.toUpperCase();
+    [].forEach.call(document.querySelectorAll(".lang-menu button"), function (b) { b.classList.toggle("active", b.getAttribute("data-l") === l); });
+    input.placeholder = PH[l] || PH.fr; hint.textContent = "";
   }
-  // access gate → demos/<slug>/   (security-by-obscurity; the repo is public anyway)
-  var form = document.getElementById("gate"), input = document.getElementById("code"), hint = document.getElementById("hint");
+  var saved; try { saved = localStorage.getItem("bayesLang"); } catch (e) {}
+  setLang(saved === "en" ? "en" : "fr");
+
+  // language dropdown
+  var lt = document.getElementById("langToggle");
+  lt.addEventListener("click", function () { lt.classList.toggle("open"); });
+  document.addEventListener("click", function (e) { if (!lt.contains(e.target)) lt.classList.remove("open"); });
+  [].forEach.call(document.querySelectorAll(".lang-menu button"), function (b) {
+    b.addEventListener("click", function (e) { e.stopPropagation(); setLang(b.getAttribute("data-l")); lt.classList.remove("open"); });
+  });
+
+  // subtle brand orbit (echoes the deck's planet-orbit motif, on light)
+  var orbit = document.getElementById("splashOrbit");
+  [{ r: 33, n: 18, d: 150 }, { r: 44, n: 26, d: 210, rev: 1 }, { r: 50, n: 30, d: 280 }].forEach(function (R) {
+    var ring = document.createElement("div"); ring.className = "oring";
+    ring.style.animation = "spin " + R.d + "s linear infinite" + (R.rev ? " reverse" : "");
+    for (var k = 0; k < R.n; k++) {
+      var a = ((360 / R.n) * k + (k % 3) * 4) * Math.PI / 180, rr = R.r + (k % 4) - 1.5;
+      var dt = document.createElement("span"); dt.className = "odot";
+      dt.style.left = (50 + rr * Math.cos(a)).toFixed(2) + "%";
+      dt.style.top = (50 + rr * Math.sin(a)).toFixed(2) + "%";
+      ring.appendChild(dt);
+    }
+    orbit.appendChild(ring);
+  });
+
+  // access gate → demos/<slug>/  (security-by-obscurity; the repo is public anyway)
   function slugify(v) { return (v || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
-  form.addEventListener("submit", function (e) {
+  document.getElementById("gate").addEventListener("submit", function (e) {
     e.preventDefault();
-    var slug = slugify(input.value);
-    if (!slug) { hint.textContent = "Entrez le code de votre démo · enter your demo code"; return; }
-    hint.textContent = "Ouverture… · opening…";
+    var slug = slugify(input.value), l = html.getAttribute("data-lang");
+    if (!slug) { hint.textContent = l === "en" ? "Enter your demo code." : "Entrez le code de votre démo."; return; }
+    hint.textContent = l === "en" ? "Opening…" : "Ouverture…";
     window.location.href = "demos/" + slug + "/";
   });
 })();
