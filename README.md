@@ -3,8 +3,13 @@
 A single home for **Bayes Impact's interactive demos and presentations** — built on one shared,
 dependency-free design system. Website-linkable demo pages and partner decks live side by side.
 
-- 🛰️ **Signature Bayes look** — warm beige + ink, accent orange, the living-Earth vision hero.
-- 🌍 **Bilingual FR/EN** from the start, with a live toggle.
+- 🛰️ **Signature Bayes look** — warm beige + ink, restrained orange, gold-marker emphasis, the
+  living-Earth vision hero, and a site-matching top nav (logo backlink + language menu + PDF).
+- ♻️ **Shared slides** — the Bayes intro, the vision hero and the optional Platform-showcase slides
+  live in `lib/bayes-slides.js`. Edit once → every deck updates; override per deck when needed.
+- 🧱 **Maximalist scaffold** — the template ships every canonical slide; a new deck keeps the few
+  that fit and deletes the rest, without becoming a *usine à gaz*.
+- 🌍 **Bilingual FR/EN** from the start, with a live switcher.
 - 📱 **Mobile-readable**, 🖥️ **desktop-first for demos**, 🖨️ **PDF-exportable** (desktop layout,
   demos shown in their finished state).
 - 🧩 **Animated demos included** — a WhatsApp-style conversational service and a back-office copilot,
@@ -36,10 +41,10 @@ Then commit & push — it goes live at
 
 ```
 index.html      splash gate (type a code → /demos/<slug>/)
-lib/            bayes.css · bayes.js   — the shared engine (rarely edited)
+lib/            bayes.css · bayes.js · bayes-slides.js   — the shared engine (rarely edited)
 assets/         logos · planet · partner logos
 demos/          _template/  +  one folder per demo
-CLAUDE.md       the agent playbook (design system, voice, slide structure, demos, requirements)
+CLAUDE.md       the agent playbook (design system, voice, shared slides, demos, requirements)
 ```
 
 Built with the Bayes brand system — Inter + JetBrains Mono; beige `#F2EFE9`, ink black, orange
