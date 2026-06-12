@@ -3,18 +3,110 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>La Bayes Platform</title>
+<title>Bayes Impact</title>
 <link rel="icon" href="../../assets/logos/bi-mark.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../lib/bayes.css" />
+
+<!-- Bespoke components for this deck only (section system, timeline, team, references,
+     the France Travail browser mock). Built on the shared tokens; never edits the shared CSS. -->
+<style>
+  /* ── section system: use-case slides get a faint wash + a blue "use case" marker;
+       platform-feature slides keep the standard orange eyebrow. ── */
+  .slide.usecase{ background:radial-gradient(72% 90% at 84% 6%, rgba(16,103,254,.05) 0%, transparent 56%), var(--bg); }
+  .uc-tag{ display:inline-flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-blue); margin:0 0 22px; }
+  .uc-tag::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--accent-blue); box-shadow:0 0 0 3px rgba(16,103,254,.16); }
+
+  /* ── history timeline ── */
+  .tl{ display:grid; grid-template-columns:repeat(6,1fr); gap:0; margin-top:30px; position:relative; }
+  .tl::before{ content:''; position:absolute; left:6px; right:6px; top:6px; height:2px; background:var(--border-soft); }
+  .tl-item{ position:relative; padding:0 12px 0 0; }
+  .tl-item::before{ content:''; position:absolute; top:0; left:0; width:13px; height:13px; border-radius:50%; background:var(--card); border:2px solid var(--accent-orange); }
+  .tl-y{ display:block; margin-top:26px; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:15px; color:var(--ink); }
+  .tl-d{ display:block; margin-top:6px; font-size:12px; line-height:1.42; color:var(--muted); }
+  .tl-d b{ color:var(--ink-soft); font-weight:700; }
+
+  /* ── headline stats ── */
+  .stats{ display:flex; gap:46px; flex-wrap:wrap; margin-top:30px; }
+  .stat b{ display:block; font-size:38px; font-weight:800; letter-spacing:-.02em; color:var(--ink); line-height:1; }
+  .stat span{ font-size:13px; color:var(--muted); }
+
+  /* ── team ── */
+  .team{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; }
+  .tm{ background:var(--card); border:1px solid var(--border-soft); border-radius:14px; padding:16px 16px 18px; box-shadow:var(--shadow); }
+  .tm-n{ font-weight:700; font-size:15.5px; color:var(--ink); }
+  .tm-r{ font-size:12.5px; color:var(--muted); margin-top:3px; line-height:1.4; }
+
+  /* ── references: real logos + wordmark chips for the rest ── */
+  .refs-lab{ font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:4px 0 12px; }
+  .refs{ display:flex; flex-wrap:wrap; gap:9px 10px; align-items:center; }
+  .ref{ font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:var(--ink-soft); background:var(--card); border:1px solid var(--border-soft); border-radius:8px; padding:7px 12px; white-space:nowrap; }
+  .ref.fund{ color:var(--muted); }
+
+  /* ── healthcare category grid ── */
+  .hc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:13px; margin-top:8px; }
+  .hc{ background:var(--card); border:1px solid var(--border-soft); border-radius:13px; padding:14px 15px; box-shadow:var(--shadow); }
+  .hc-k{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--accent-blue); }
+  .hc-t{ font-weight:700; font-size:14px; color:var(--ink); margin-top:5px; }
+  .hc-e{ font-size:12px; color:var(--muted); margin-top:5px; line-height:1.45; }
+
+  /* ── France Travail browser mock ── */
+  .ftb{ border-radius:14px; border:1px solid var(--border-soft); box-shadow:var(--shadow); overflow:hidden; background:var(--card); max-width:900px; margin-top:6px; }
+  .ftb-bar{ display:flex; align-items:center; gap:10px; padding:9px 14px; background:var(--cream); border-bottom:1px solid var(--border-soft); }
+  .ftb-dots{ display:flex; gap:6px; flex:0 0 auto; } .ftb-dots i{ width:11px; height:11px; border-radius:50%; background:var(--border-soft); display:block; }
+  .ftb-url{ flex:1 1 auto; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted); background:var(--card); border:1px solid var(--border-soft); border-radius:7px; padding:5px 11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ftb-badge{ flex:0 0 auto; font-family:'JetBrains Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-blue); background:rgba(16,103,254,.1); border-radius:5px; padding:4px 8px; }
+  .ftb-app{ display:flex; align-items:center; gap:11px; padding:13px 18px; border-bottom:1px solid var(--border); }
+  .ftb-logo{ font-weight:800; font-size:15px; letter-spacing:-.01em; }
+  .ftb-logo .ft1{ color:#d8362d; } .ftb-logo .ft2{ color:#0b1f8f; }
+  .ftb-app-sub{ font-size:12px; color:var(--muted); }
+  .ftb-body{ padding:18px 18px 20px; display:flex; flex-direction:column; gap:13px; }
+  .ftb-q{ align-self:flex-end; max-width:74%; background:var(--ink); color:#fff; border-radius:15px 15px 5px 15px; padding:9px 14px; font-size:14px; line-height:1.4; }
+  .ftb-a{ align-self:flex-start; max-width:88%; }
+  .ftb-tools{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:8px; }
+  .ftb-tool{ display:inline-flex; align-items:center; gap:7px; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--accent-blue); background:rgba(16,103,254,.07); border:1px solid rgba(16,103,254,.22); border-radius:8px; padding:5px 10px; }
+  .ftb-tool::before{ content:'⚙'; font-size:11px; }
+  .ftb-tool b{ color:var(--ink); font-weight:700; }
+  .ftb-bubble{ background:var(--cream); border:1px solid var(--border-soft); border-radius:5px 15px 15px 15px; padding:11px 15px; font-size:13.5px; line-height:1.5; color:var(--ink-soft); }
+  .ftb-bubble b{ color:var(--ink); }
+  .ftb-jobs{ display:flex; gap:8px; margin-top:9px; flex-wrap:wrap; }
+  .ftb-job{ flex:1 1 150px; background:var(--card); border:1px solid var(--border-soft); border-radius:9px; padding:9px 11px; }
+  .ftb-job .j-t{ font-weight:700; font-size:12.5px; color:var(--ink); }
+  .ftb-job .j-m{ font-size:11px; color:var(--muted); margin-top:2px; }
+  .uc-note{ display:flex; flex-direction:column; gap:14px; }
+  .uc-note .ucn{ font-size:14px; line-height:1.5; color:var(--ink-soft); }
+  .uc-note .ucn b{ color:var(--ink); }
+  .uc-note .ucn .k{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-blue); display:block; margin-bottom:4px; }
+
+  /* ── "introducing" statement slide ── */
+  .intro-state .eyebrow{ color:var(--accent-orange); }
+  .intro-state h1{ font-size:clamp(40px,6.6vw,88px); line-height:1; letter-spacing:-.035em; font-weight:800; margin:0; color:#fff; max-width:16ch; }
+  .intro-state .lead{ color:rgba(255,255,255,.82); max-width:46ch; margin-top:22px; }
+
+  /* ── open-source philosophy ── */
+  .phi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }
+  .phi-li{ font-size:13px; color:var(--ink-soft); line-height:1.5; padding-left:18px; position:relative; margin-top:8px; }
+  .phi-li::before{ content:'→'; position:absolute; left:0; color:var(--accent-orange); font-weight:700; }
+  .phi-li b{ color:var(--ink); }
+
+  @media (max-width:1100px){
+    .tl{ grid-template-columns:1fr 1fr 1fr; row-gap:26px; } .tl::before{ display:none; }
+    .tl-item::before{ display:none; } .tl-y{ margin-top:0; }
+    .team{ grid-template-columns:1fr 1fr; } .hc-grid, .phi-grid{ grid-template-columns:1fr; }
+  }
+  @media print{
+    .tl{ grid-template-columns:repeat(6,1fr) !important; } .team{ grid-template-columns:repeat(4,1fr) !important; }
+    .hc-grid, .phi-grid{ grid-template-columns:repeat(3,1fr) !important; }
+  }
+</style>
 </head>
 <body
   data-assets="../../assets/"
   data-logo="../../assets/logos/bi-colors.svg"
   data-logo-dark="../../assets/logos/bi-white.svg"
-  data-label-fr="LA BAYES PLATFORM"
-  data-label-en="THE BAYES PLATFORM">
+  data-label-fr="BAYES IMPACT"
+  data-label-en="BAYES IMPACT">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="bi-mark" viewBox="0 0 415 409">
@@ -30,32 +122,163 @@
 
 <main class="deck" id="deck">
 
-  <!-- 1 · COVER -->
-  <section class="slide dark cover" id="cover" data-dark>
-    <div class="slide-inner">
-      <div class="cover-mark reveal"><img class="bilogo" src="../../assets/logos/bi-white.svg" alt="Bayes Impact"/></div>
-      <p class="eyebrow reveal"><span data-lang="fr">Présentation · 2026</span><span data-lang="en">Presentation · 2026</span></p>
-      <h1 class="reveal">Bayes Platform</h1>
-      <p class="sub reveal"><span data-lang="fr">La plateforme d'agents IA open-source, pour le service public.</span><span data-lang="en">The open-source AI agent platform, for public services.</span></p>
-      <p class="tagline reveal"><span data-lang="fr">Souveraine et open-source, <em>au service de l'intérêt général.</em></span><span data-lang="en">Sovereign and open-source, <em>built for the public good.</em></span></p>
-    </div>
-    <div class="cover-foot"><span>bayesimpact.org</span><span class="cf-r">Bayes Impact · 2026</span></div>
-  </section>
+  <!-- 1 · COVER — Bayes Impact title card (the brand) -->
+  <div data-shared="cover">
+    <script type="application/json">
+    { "eyebrow": { "fr": "L'ONG de référence pour l'IA au service public", "en": "The leading nonprofit for AI in public services" },
+      "title":   { "fr": "Bayes Impact", "en": "Bayes Impact" },
+      "sub":     { "fr": "L'IA pour aider celles et ceux qui en ont besoin, et celles et ceux qui les accompagnent.", "en": "AI to empower people in need and those who help them." },
+      "chips":   [ { "fr": "À but non lucratif", "en": "Nonprofit" }, { "fr": "Open-source", "en": "Open-source" }, { "fr": "Depuis 2014", "en": "Since 2014" } ],
+      "foot":    { "fr": "bayesimpact.org", "en": "bayesimpact.org" } }
+    </script>
+  </div>
 
-  <!-- 2 · EARTH — the vision -->
+  <!-- 2 · EARTH — the mission -->
   <div data-shared="earth"></div>
 
-  <!-- 3 · WHO WE ARE -->
-  <div data-shared="about"></div>
+  <!-- 3 · HISTORY — what we've built since 2014 -->
+  <section class="slide" id="history">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Qui nous sommes</span><span data-lang="en">Who we are</span></p>
+      <h2 class="title reveal" style="max-width:30ch"><span data-lang="fr">Dix ans à construire l'IA <em class="hl">au service de l'intérêt général</em>.</span><span data-lang="en">Ten years building AI <em class="hl">for the public good</em>.</span></h2>
+      <p class="lead reveal" style="margin-top:4px; max-width:62ch"><span data-lang="fr">Une organisation à but non lucratif née dans la Silicon Valley. Nous développons des cas d'usage d'IA au service de celles et ceux qui en ont besoin, à travers la Bayes Platform.</span><span data-lang="en">A nonprofit born in Silicon Valley. We build AI use cases for the people who need them, through the Bayes Platform.</span></p>
+      <div class="tl reveal">
+        <div class="tl-item"><span class="tl-y">2014</span><span class="tl-d"><span data-lang="fr"><b>Fondation</b> à San Francisco, incubés par Y Combinator.</span><span data-lang="en"><b>Founded</b> in San Francisco, backed by Y Combinator.</span></span></div>
+        <div class="tl-item"><span class="tl-y">2016</span><span class="tl-d"><span data-lang="fr"><b>Bob</b>, coach emploi avec Pôle Emploi. 500&nbsp;000+ personnes.</span><span data-lang="en"><b>Bob</b>, a job coach with Pôle Emploi. 500k+ people.</span></span></div>
+        <div class="tl-item"><span class="tl-y">2020</span><span class="tl-d"><span data-lang="fr"><b>Conotify</b>, alerte sanitaire. 10M+ citoyens.</span><span data-lang="en"><b>Conotify</b>, exposure alerts. 10M+ citizens.</span></span></div>
+        <div class="tl-item"><span class="tl-y">2024</span><span class="tl-d"><span data-lang="fr"><b>CaseAI</b>, open-source pour le travail social.</span><span data-lang="en"><b>CaseAI</b>, open-source for social work.</span></span></div>
+        <div class="tl-item"><span class="tl-y">2025</span><span class="tl-d"><span data-lang="fr"><b>France Travail</b> à l'échelle nationale. <b>AP-HP</b> (soutien Google.org).</span><span data-lang="en"><b>France Travail</b> nationwide. <b>AP-HP</b> (Google.org-backed).</span></span></div>
+        <div class="tl-item"><span class="tl-y">2026</span><span class="tl-d"><span data-lang="fr"><b>Togo</b> : services publics par WhatsApp pour 9M de citoyens.</span><span data-lang="en"><b>Togo</b>: public services on WhatsApp for 9M citizens.</span></span></div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>10M+</b><span data-lang="fr">personnes aidées</span><span data-lang="en">people served</span></div>
+        <div class="stat"><b>3</b><span data-lang="fr">continents</span><span data-lang="en">continents</span></div>
+        <div class="stat"><b>2014</b><span data-lang="fr">Silicon Valley · à but non lucratif</span><span data-lang="en">Silicon Valley · nonprofit</span></div>
+        <div class="stat"><b>100%</b><span data-lang="fr">open-source</span><span data-lang="en">open-source</span></div>
+      </div>
+    </div>
+  </section>
 
-  <!-- 4 · THE PLATFORM — overview -->
+  <!-- 4 · TEAM & REFERENCES -->
+  <section class="slide" id="team">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Équipe &amp; références</span><span data-lang="en">Team &amp; references</span></p>
+      <h2 class="title reveal" style="max-width:28ch"><span data-lang="fr">Une équipe du service public et de la tech, <em class="hl">de confiance</em>.</span><span data-lang="en">A public-service and tech team you can <em class="hl">trust</em>.</span></h2>
+      <div class="team reveal">
+        <div class="tm"><div class="tm-n">Paul Duan</div><div class="tm-r"><span data-lang="fr">Fondateur &amp; Président · Forbes, Ashoka, MIT Tech Review</span><span data-lang="en">Founder &amp; President · Forbes, Ashoka, MIT Tech Review</span></div></div>
+        <div class="tm"><div class="tm-n">Elodie Juan-Julia</div><div class="tm-r"><span data-lang="fr">COO · ex-CFO Dogami, Head of Finance Datadog</span><span data-lang="en">COO · ex-CFO Dogami, Head of Finance Datadog</span></div></div>
+        <div class="tm"><div class="tm-n">Jérémie Doucy, PhD</div><div class="tm-r"><span data-lang="fr">CTO · doctorat TAL, 15 ans d'ingénierie IA (Airbus)</span><span data-lang="en">CTO · NLP PhD, 15 yrs AI engineering (Airbus)</span></div></div>
+        <div class="tm"><div class="tm-n">Vincent Vercamer, PhD</div><div class="tm-r"><span data-lang="fr">Directeur Santé · ex-Délégation au Numérique en Santé</span><span data-lang="en">Health Director · ex-France Digital Health Delegation</span></div></div>
+      </div>
+      <div class="reveal" style="margin-top:30px">
+        <div class="refs-lab"><span data-lang="fr">Ils nous font confiance · partenaires &amp; financeurs</span><span data-lang="en">Trusted by · partners &amp; funders</span></div>
+        <div class="partners-grid" style="justify-content:flex-start; gap:30px; margin-bottom:14px">
+          <img src="../../assets/partners/france-travail.webp" alt="France Travail" />
+          <img src="../../assets/partners/google.webp" alt="Google.org" />
+          <img src="../../assets/partners/gates.webp" alt="Gates Foundation" />
+          <img src="../../assets/partners/yc.webp" alt="Y Combinator" />
+          <img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
+        </div>
+        <div class="refs">
+          <span class="ref">AP-HP</span>
+          <span class="ref">DINUM</span>
+          <span class="ref">Assurance Maladie</span>
+          <span class="ref">Ashoka</span>
+          <span class="ref">Actiris · Bruxelles</span>
+          <span class="ref">UK DWP</span>
+          <span class="ref fund">Caisse des Dépôts</span>
+          <span class="ref fund">Robert Wood Johnson Fdn</span>
+          <span class="ref fund">Fast Forward</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · INTRODUCING THE BAYES PLATFORM (statement) -->
+  <section class="slide dark intro-state" id="introducing" data-dark>
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Notre produit</span><span data-lang="en">Our product</span></p>
+      <h1 class="reveal"><span data-lang="fr">Voici la <em class="hl">Bayes Platform</em>.</span><span data-lang="en">Introducing the <em class="hl">Bayes Platform</em>.</span></h1>
+      <p class="lead reveal"><span data-lang="fr">La plateforme open-source d'agents IA qui transforme ces cas d'usage en services en production, sur l'infrastructure des organisations qui les déploient.</span><span data-lang="en">The open-source AI agent platform that turns these use cases into production services, on the infrastructure of the organizations that run them.</span></p>
+    </div>
+    <div class="cover-foot"><span>bayesimpact.org</span><span class="cf-r">Bayes Platform</span></div>
+  </section>
+
+  <!-- 6 · PLATFORM OVERVIEW -->
   <div data-shared="platform-overview"></div>
 
-  <!-- 5 · DEMO — what it looks like in practice -->
-  <section class="slide" id="demo-chat" data-demo="chat">
+  <!-- 7 · USE CASE — France Travail (CoachFT) -->
+  <section class="slide usecase" id="uc-francetravail">
+    <div class="slide-inner">
+      <p class="uc-tag reveal"><span data-lang="fr">Cas d'usage · Emploi</span><span data-lang="en">Use case · Employment</span></p>
+      <h2 class="title reveal" style="max-width:24ch"><span data-lang="fr">Un coach IA, <em class="hl">dans l'outil métier</em> de France Travail.</span><span data-lang="en">An AI coach, <em class="hl">inside the France Travail</em> workspace.</span></h2>
+      <div class="split reveal" style="margin-top:8px; grid-template-columns:1.35fr .9fr; gap:34px">
+        <div class="ftb">
+          <div class="ftb-bar"><div class="ftb-dots"><i></i><i></i><i></i></div><div class="ftb-url">vivatech.francetravail.bayes.org</div><span class="ftb-badge">démo</span></div>
+          <div class="ftb-app"><span class="ftb-logo"><span class="ft1">france</span><span class="ft2">travail</span></span><span class="ftb-app-sub"><span data-lang="fr">Coach · espace conseiller</span><span data-lang="en">Coach · advisor workspace</span></span></div>
+          <div class="ftb-body">
+            <div class="ftb-q">je veux devenir infirmière</div>
+            <div class="ftb-a">
+              <div class="ftb-tools"><span class="ftb-tool"><b>fiche_metier</b>(infirmier)</span><span class="ftb-tool"><b>formations</b>(IFSI)</span></div>
+              <div class="ftb-bubble"><span data-lang="fr">Le métier d'<b>infirmier·ère</b> se prépare via le <b>Diplôme d'État (IFSI)</b>, 3 ans. J'ai trouvé <b>4 formations</b> près de chez vous et les aides mobilisables. On regarde les débouchés ?</span><span data-lang="en">Becoming a <b>nurse</b> is via the <b>State Diploma (IFSI)</b>, 3 years. I found <b>4 programmes</b> near you and the funding you can use. Want to look at openings?</span></div>
+            </div>
+            <div class="ftb-q">il y a des jobs à Nancy ?</div>
+            <div class="ftb-a">
+              <div class="ftb-tools"><span class="ftb-tool"><b>offres</b>(infirmier, Nancy)</span><span class="ftb-tool"><b>tension_marché</b>(54)</span></div>
+              <div class="ftb-bubble"><span data-lang="fr"><b>Oui</b> : <b>127 offres</b> à Nancy et alentours, marché <b>très tendu</b> (recrutement facilité).</span><span data-lang="en"><b>Yes</b>: <b>127 openings</b> in and around Nancy, a <b>high-demand</b> market.</span>
+                <div class="ftb-jobs">
+                  <div class="ftb-job"><div class="j-t">CHRU de Nancy</div><div class="j-m"><span data-lang="fr">CDI · temps plein</span><span data-lang="en">Permanent · full-time</span></div></div>
+                  <div class="ftb-job"><div class="j-t">EHPAD Saint-Julien</div><div class="j-m"><span data-lang="fr">CDD · de jour</span><span data-lang="en">Fixed-term · day shift</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="uc-note">
+          <div class="ucn"><span class="k"><span data-lang="fr">Intégré au métier</span><span data-lang="en">Embedded</span></span><span data-lang="fr">Un <b>coach pour les demandeurs d'emploi</b>, intégré directement dans l'applicatif de France Travail.</span><span data-lang="en">A <b>coach for job-seekers</b>, embedded directly inside the France Travail application.</span></div>
+          <div class="ucn"><span class="k"><span data-lang="fr">Outils vérifiés</span><span data-lang="en">Verified tools</span></span><span data-lang="fr">L'agent appelle <b>les bons outils pour les bonnes requêtes</b> (tool calling) : fiches métier, offres, formations. Des sources officielles, jamais le web ouvert.</span><span data-lang="en">The agent calls <b>the right tools for each query</b> (tool calling): job profiles, openings, training. Official sources, never the open web.</span></div>
+          <div class="ucn"><span class="k"><span data-lang="fr">Sous-agents · Bayes Platform</span><span data-lang="en">Sub-agents · Bayes Platform</span></span><span data-lang="fr">Chaque outil est un <b>sous-agent</b> connecté à un système métier via la Bayes Platform.</span><span data-lang="en">Each tool is a <b>sub-agent</b> wired to a business system through the Bayes Platform.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8–13 · PLATFORM SHOWCASE (how it works · why you can trust it) -->
+  <div data-shared="platform-grounding"></div>
+  <div data-shared="platform-sources"></div>
+  <div data-shared="platform-studio"></div>
+  <div data-shared="platform-compliance"></div>
+  <div data-shared="platform-observability"></div>
+  <div data-shared="platform-evaluation"></div>
+
+  <!-- 14 · USE CASE — Healthcare (Impulse cohort) -->
+  <section class="slide usecase" id="uc-health">
+    <div class="slide-inner">
+      <p class="uc-tag reveal"><span data-lang="fr">Cas d'usage · Santé</span><span data-lang="en">Use case · Healthcare</span></p>
+      <h2 class="title reveal" style="max-width:30ch"><span data-lang="fr">Des dizaines de cas d'usage, <em class="hl">au service des soignants et des patients</em>.</span><span data-lang="en">Dozens of use cases, <em class="hl">serving caregivers and patients</em>.</span></h2>
+      <p class="lead reveal" style="margin-top:4px; max-width:64ch"><span data-lang="fr">Dans les hôpitaux publics, les besoins remontent du terrain. Notre programme d'accompagnement <b>Impulse</b> les transforme en agents, déployés sur la Bayes Platform.</span><span data-lang="en">In public hospitals, needs come from the ground up. Our <b>Impulse</b> program turns them into agents, deployed on the Bayes Platform.</span></p>
+      <div class="hc-grid reveal">
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Interprétation clinique</span><span data-lang="en">Clinical insights</span></div><div class="hc-t"><span data-lang="fr">Lire &amp; expliquer les résultats</span><span data-lang="en">Read &amp; explain results</span></div><div class="hc-e"><span data-lang="fr">Génétique, immunologie, nutrition : aider le clinicien à interpréter analyses et examens.</span><span data-lang="en">Genetics, immunology, nutrition: help clinicians interpret tests and results.</span></div></div>
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Appui aux protocoles</span><span data-lang="en">Protocol support</span></div><div class="hc-t"><span data-lang="fr">Le bon protocole, étape par étape</span><span data-lang="en">The right protocol, step by step</span></div><div class="hc-e"><span data-lang="fr">Urgences, réanimation néonatale : identifier le protocole et en suivre chaque étape.</span><span data-lang="en">Emergency, neonatal ICU: find the protocol and follow each step.</span></div></div>
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Appui à la recherche</span><span data-lang="en">Research support</span></div><div class="hc-t"><span data-lang="fr">Revues &amp; éligibilité aux essais</span><span data-lang="en">Reviews &amp; trial eligibility</span></div><div class="hc-e"><span data-lang="fr">Évaluer la pertinence d'articles, analyser les dossiers pour les critères d'inclusion.</span><span data-lang="en">Screen articles, analyse records against inclusion criteria.</span></div></div>
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Éducation &amp; suivi patient</span><span data-lang="en">Patient education</span></div><div class="hc-t"><span data-lang="fr">Informer &amp; rassurer les patients</span><span data-lang="en">Inform &amp; reassure patients</span></div><div class="hc-e"><span data-lang="fr">Anesthésie pédiatrique, chirurgie, PMA, prévention : répondre aux questions fréquentes.</span><span data-lang="en">Paediatric anaesthesia, surgery, ART, prevention: answer common questions.</span></div></div>
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Pré-consultation</span><span data-lang="en">Pre-consultation</span></div><div class="hc-t"><span data-lang="fr">Qualifier avant le rendez-vous</span><span data-lang="en">Qualify before the visit</span></div><div class="hc-e"><span data-lang="fr">Oncologie, cardiologie, orthopédie, gériatrie : recueillir et structurer les données.</span><span data-lang="en">Oncology, cardiology, orthopaedics, geriatrics: collect and structure data.</span></div></div>
+        <div class="hc"><div class="hc-k"><span data-lang="fr">Qualité &amp; sécurité</span><span data-lang="en">Quality &amp; safety</span></div><div class="hc-t"><span data-lang="fr">Signaler &amp; analyser</span><span data-lang="en">Report &amp; analyse</span></div><div class="hc-e"><span data-lang="fr">Déclaration d'événements indésirables, lecture des indicateurs qualité.</span><span data-lang="en">Adverse-event reporting, reading quality &amp; safety indicators.</span></div></div>
+      </div>
+      <div class="reveal" style="margin-top:22px">
+        <div class="refs">
+          <span class="ref">AP-HP</span><span class="ref">Hôtel-Dieu</span><span class="ref">CHU de Montpellier</span><span class="ref fund"><span data-lang="fr">Programme Impulse Healthcare · cohorte #1 (FR-26)</span><span data-lang="en">Impulse Healthcare program · cohort #1 (FR-26)</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · USE CASE — Government (WhatsApp civil registry) -->
+  <section class="slide usecase" id="uc-gov" data-demo="chat">
     <div class="slide-inner">
       <div class="demo-head reveal">
-        <h2><span data-lang="fr">En pratique : un service accessible sur WhatsApp</span><span data-lang="en">In practice: a service on WhatsApp</span></h2>
+        <div><p class="uc-tag" style="margin-bottom:8px"><span data-lang="fr">Cas d'usage · Gouvernement</span><span data-lang="en">Use case · Government</span></p>
+        <h2 style="margin:0"><span data-lang="fr">Le service public, accessible sur WhatsApp</span><span data-lang="en">Public services, on WhatsApp</span></h2></div>
         <div class="demo-controls"><button class="dc-btn dc-toggle">⏸</button><button class="dc-btn ghost dc-replay">↻</button></div>
       </div>
       <div class="demo-stage" style="margin-top:12px">
@@ -140,18 +363,38 @@
     </script>
   </section>
 
-  <!-- 6–12 · PLATFORM SHOWCASE -->
-  <div data-shared="platform-grounding"></div>
-  <div data-shared="platform-sources"></div>
-  <div data-shared="platform-studio"></div>
-  <div data-shared="platform-compliance"></div>
-  <div data-shared="platform-observability"></div>
-  <div data-shared="platform-evaluation"></div>
+  <!-- 16 · OPEN-SOURCE PHILOSOPHY -->
+  <section class="slide" id="philosophy">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Notre modèle</span><span data-lang="en">Our model</span></p>
+      <h2 class="title reveal" style="max-width:24ch"><span data-lang="fr">Une philosophie <em class="hl">ouvertariste</em>.</span><span data-lang="en">An <em class="hl">open-first</em> philosophy.</span></h2>
+      <div class="phi-grid reveal">
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">OUVERT</span><span data-lang="en">OPEN</span></div>
+          <h3><span data-lang="fr">Open-source, à but non lucratif</span><span data-lang="en">Open-source, nonprofit</span></h3>
+          <div class="phi-li"><span data-lang="fr"><b>Licence MIT</b> : le code vous appartient.</span><span data-lang="en"><b>MIT license</b>: the code is yours.</span></div>
+          <div class="phi-li"><span data-lang="fr">Un <b>modèle non lucratif</b> finance la R&amp;D et garde la plateforme à la pointe.</span><span data-lang="en">A <b>nonprofit model</b> funds R&amp;D and keeps the platform cutting-edge.</span></div>
+        </div>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">SÉCURITÉ &amp; CONFORMITÉ</span><span data-lang="en">SECURITY &amp; COMPLIANCE</span></div>
+          <h3><span data-lang="fr">Au standard du secteur</span><span data-lang="en">To sector standards</span></h3>
+          <div class="phi-li"><span data-lang="fr">Certifications <b>SOC 2</b> et <b>ISO 27001</b>.</span><span data-lang="en"><b>SOC 2</b> and <b>ISO 27001</b> certifications.</span></div>
+          <div class="phi-li"><span data-lang="fr"><b>Accompagnement</b> possible : intégration, support, SLA.</span><span data-lang="en">Optional <b>support offer</b>: integration, support, SLA.</span></div>
+        </div>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">HÉBERGEMENT &amp; PORTABILITÉ</span><span data-lang="en">HOSTING &amp; PORTABILITY</span></div>
+          <h3><span data-lang="fr">Là où vous en avez besoin</span><span data-lang="en">Wherever you need it</span></h3>
+          <div class="phi-li"><span data-lang="fr">Pilotes sur notre <b>Cloud HDS</b> : serveurs FR / UE / US / Afrique de l'Ouest.</span><span data-lang="en">Pilots on our <b>HDS Cloud</b>: FR / EU / US / West Africa servers.</span></div>
+          <div class="phi-li"><span data-lang="fr"><b>Portabilité on-premise</b> : reprenez la main quand vous voulez.</span><span data-lang="en"><b>On-premise portability</b>: take over whenever you want.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- 13 · HOW WE WORK -->
+  <!-- 17 · HOW WE WORK -->
   <section class="slide" id="partnership">
     <div class="slide-inner">
-      <p class="eyebrow reveal"><span data-lang="fr">COMMENT NOUS TRAVAILLONS</span><span data-lang="en">HOW WE WORK</span></p>
+      <p class="eyebrow reveal"><span data-lang="fr">Comment nous travaillons</span><span data-lang="en">How we work</span></p>
       <h2 class="title reveal"><span data-lang="fr">Un partenariat, <em class="hl">pas un fournisseur</em>.</span><span data-lang="en">A partnership, <em class="hl">not a vendor</em>.</span></h2>
       <div class="cards c3 reveal">
         <div class="card">
@@ -170,17 +413,10 @@
           <p><span data-lang="fr">Organisation à but non lucratif : nos intérêts sont les vôtres, pas ceux d'actionnaires.</span><span data-lang="en">Nonprofit: our interests are yours, not shareholders'.</span></p>
         </div>
       </div>
-      <div class="partners-grid reveal" style="margin-top:34px">
-        <img src="../../assets/partners/google.webp" alt="Google.org" />
-        <img src="../../assets/partners/gates.webp" alt="Gates Foundation" />
-        <img src="../../assets/partners/yc.webp" alt="Y Combinator" />
-        <img src="../../assets/partners/france-travail.webp" alt="France Travail" />
-        <img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
-      </div>
     </div>
   </section>
 
-  <!-- 14 · CLOSING -->
+  <!-- 18 · CLOSING -->
   <div data-shared="closing"></div>
 
 </main>

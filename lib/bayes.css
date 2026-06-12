@@ -475,8 +475,9 @@
     .brand-corner{left:40px;}
     .brand-corner::after{width:calc(100vw - 80px);}
     .pipeline{grid-template-columns:1fr;}
-    .hero{grid-template-columns:1fr; gap:22px; text-align:center; justify-items:center;}
-    .hero-planet{order:-1;} .planet-wrap{width:min(280px,58vw);}
+    .hero{grid-template-columns:1fr; gap:26px; text-align:center; justify-items:center;}
+    .hero-planet{order:-1; width:100%;} .planet-wrap{width:min(300px,64vw); margin:6px auto 0;}
+    .hero-txt h1.believe, .hero-txt .lead{margin-left:auto; margin-right:auto;}
   }
   /* tablet & mobile */
   @media (max-width:760px){
