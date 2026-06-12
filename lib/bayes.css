@@ -40,8 +40,7 @@
   .dots.on-dark .dot{background:rgba(255,255,255,.25);}
   .dots.on-dark .dot.active{background:var(--accent-orange);}
   .counter{position:fixed; left:26px; bottom:22px; z-index:200; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--muted);}
-  .hint{position:fixed; right:26px; bottom:22px; z-index:200; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em; color:var(--muted); opacity:.75;}
-  .slide.dark ~ .hint{}
+  .hint{display:none;}   /* replaced by the bottom-right PDF control */
   .brand-corner{position:absolute; top:40px; left:88px; display:inline-flex; align-items:center; gap:13px; color:var(--border-soft); z-index:5; padding-bottom:16px;}
   .brand-corner::after{content:''; position:absolute; left:0; bottom:0; width:calc(100vw - 176px); height:1px; background:var(--border-soft); opacity:.8;}
   .brand-corner svg{width:22px; height:22px;}
@@ -438,23 +437,22 @@
   .hero-planet{display:flex; justify-content:center; align-items:center;}
   .hero-planet img{width:100%; height:auto; display:block; animation:spin 140s linear infinite;}
   .planet-wrap{position:relative; width:min(420px,40vw); animation:floaty 9s ease-in-out infinite;}
-  .planet-orbit{position:absolute; inset:-22%; pointer-events:none;}
+  .planet-orbit{position:absolute; inset:-24%; pointer-events:none;}
+  .oshell{position:absolute; inset:0; transform-origin:center;}   /* static tilt; the ring spins inside */
   .oring{position:absolute; inset:0; transform-origin:center; animation:spin 120s linear infinite;}
   .oring.rev{animation-direction:reverse;}
-  .odot{position:absolute; width:2px; height:2px; margin:-1px 0 0 -1px; border-radius:50%; background:rgba(190,210,255,.85); box-shadow:0 0 5px rgba(150,180,255,.5);}
+  .odot{position:absolute; width:2px; height:2px; margin:-1px 0 0 -1px; border-radius:50%; background:rgba(206,220,255,.9); box-shadow:0 0 2px rgba(150,180,255,.3);}
   @keyframes spin{to{transform:rotate(360deg);}}
   .hero-txt h1.believe{max-width:15ch;}
   .believe-cycle{display:block; color:var(--accent-orange); margin-top:8px; min-height:2.5em;}
   .believe-cycle::after{content:''; display:inline-block; width:2px; height:.92em; background:var(--accent-orange); margin-left:3px; vertical-align:-0.1em; animation:caret 1s steps(1) infinite;}
-  /* dark starfield framed box (mirror bayesimpact.org) */
-  .believe-box{position:relative; overflow:hidden; border-radius:24px; padding:clamp(36px,4.5vw,68px); min-height:min(60vh,540px); background:radial-gradient(58% 70% at 72% 44%, rgba(48,86,158,.30) 0%, transparent 62%), radial-gradient(120% 120% at 72% 30%, #0a1426 0%, #060b18 45%, #02040b 100%); box-shadow:0 30px 80px rgba(0,0,0,.3); color:#fff;}
+  /* deep-space framed box with the orbiting dots cloud (mirror bayesimpact.org) */
+  .believe-box{position:relative; overflow:hidden; border-radius:24px; padding:clamp(36px,4.5vw,68px); min-height:min(60vh,540px); background:radial-gradient(58% 70% at 72% 44%, rgba(40,72,140,.16) 0%, transparent 60%), radial-gradient(120% 120% at 72% 30%, #0a1426 0%, #060b18 45%, #02040b 100%); box-shadow:0 30px 80px rgba(0,0,0,.3); color:#fff;}
   .believe-box .hero-txt, .believe-box .hero-planet{position:relative; z-index:1;}
   .believe-box h1{color:#fff;}
   .believe-box .eyebrow{color:var(--accent-orange);}
   .believe-box .lead{color:rgba(255,255,255,.82);}
-  .believe-box .hero-planet img{filter:drop-shadow(0 0 46px rgba(120,170,255,.30));}
-  .believe-box .star{position:absolute; z-index:0; background:#fff; border-radius:50%; opacity:.5; animation:twinkle var(--tw,3s) ease-in-out infinite;}
-  @keyframes twinkle{0%,100%{opacity:.12;} 50%{opacity:.95;}}
+  .believe-box .hero-planet img{filter:drop-shadow(0 0 32px rgba(120,170,255,.18));}
   @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)}}
 
   /* ===== PARTNERS (credibility) ===== */
@@ -534,17 +532,17 @@
   .nav-back{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:500; color:var(--muted); transition:color .15s ease;}
   .nav-back:hover{color:var(--ink);}
   .nav-back svg{display:block;}
-  /* shared pill (lang + pdf), exactly the bayesimpact.org control style */
-  .nav-btn{display:inline-flex; align-items:center; gap:6px; height:34px; padding:0 12px; font-family:inherit; font-size:13px; font-weight:600; letter-spacing:.03em;
-           border:1px solid var(--border-soft); border-radius:999px; background:var(--card); color:var(--ink); cursor:pointer; user-select:none;
-           box-shadow:0 1px 2px rgba(0,0,0,.04); transition:border-color .18s ease, box-shadow .18s ease, transform .15s ease;}
-  .nav-btn:hover{transform:translateY(-1px); border-color:rgba(0,0,0,.45); box-shadow:0 4px 14px rgba(0,0,0,.09);}
+  /* language toggle — flat and integrated, like the bayesimpact.org nav (not a heavy pill) */
+  .nav-btn{display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 9px; font-family:inherit; font-size:13px; font-weight:600; letter-spacing:.03em;
+           border:1px solid transparent; border-radius:9px; background:none; color:var(--ink); cursor:pointer; user-select:none;
+           transition:border-color .18s ease, background .18s ease;}
+  .nav-btn:hover{background:rgba(0,0,0,.05);}
   .nav-btn svg{display:block; flex:0 0 auto;}
   .lang-toggle{position:relative;}
   .lang-globe{color:rgba(0,0,0,.5);}
   .lang-toggle:hover .lang-globe, .lang-toggle.open .lang-globe{color:var(--ink);}
   .lang-chevron{transition:transform .2s ease; opacity:.55;}
-  .lang-toggle.open{border-color:rgba(0,0,0,.45);}
+  .lang-toggle.open{background:rgba(0,0,0,.05); border-color:var(--border-soft);}
   .lang-toggle.open .lang-chevron{transform:rotate(180deg);}
   .lang-menu{position:absolute; top:42px; right:0; background:var(--card); border-radius:12px; box-shadow:0 10px 32px rgba(0,0,0,.12);
              padding:6px; min-width:140px; opacity:0; pointer-events:none; transform:translateY(-4px); transition:opacity .2s ease, transform .2s ease; z-index:260;}
@@ -557,8 +555,9 @@
   .nav.on-dark .nav-sep{color:rgba(255,255,255,.55); border-left-color:rgba(255,255,255,.18);}
   .nav.on-dark .nav-back{color:rgba(255,255,255,.6);}
   .nav.on-dark .nav-back:hover{color:#fff;}
-  .nav.on-dark .nav-btn{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22); color:#fff;}
-  .nav.on-dark .nav-btn:hover{border-color:rgba(255,255,255,.5);}
+  .nav.on-dark .nav-btn{background:none; border-color:transparent; color:#fff;}
+  .nav.on-dark .nav-btn:hover{background:rgba(255,255,255,.1);}
+  .nav.on-dark .lang-toggle.open{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.22);}
   .nav.on-dark .lang-globe{color:rgba(255,255,255,.7);}
   .nav.on-dark .lang-menu{background:#11161f; box-shadow:0 10px 32px rgba(0,0,0,.4);}
   .nav.on-dark .lang-menu button{color:#fff;}
@@ -577,15 +576,21 @@
   html[data-lang="en"] [data-lang]:not([data-lang="en"]) { display:none !important; }
 
   /* ---- Full-bleed "earth" hero (bayesimpact.org-style): quiet deep space, restrained glow ---- */
-  .slide.earth{ background:radial-gradient(60% 80% at 70% 38%, rgba(34,64,128,.18) 0%, transparent 58%), radial-gradient(130% 130% at 72% 30%, #0b1322 0%, #070c17 46%, #03060d 100%); color:#fff; }
+  .slide.earth{ background:radial-gradient(56% 76% at 70% 38%, rgba(30,56,112,.11) 0%, transparent 58%), radial-gradient(130% 130% at 72% 30%, #0a1120 0%, #060a14 46%, #02040a 100%); color:#fff; }
   .slide.earth .believe-box{ background:none !important; box-shadow:none; border-radius:0; padding:0; min-height:auto; }
-  .slide.earth .hero-planet img{ filter:drop-shadow(0 0 26px rgba(110,150,220,.18)); }   /* far less afterglow */
+  .slide.earth .hero-planet img{ filter:drop-shadow(0 0 22px rgba(110,150,220,.13)); }   /* far less afterglow */
   .believe-cycle{ display:block; color:var(--gold-bg); margin-top:6px; min-height:2.6em; transition:opacity .5s ease; }
   .believe-cycle::after{ display:none; }          /* fade-cycle, not typewriter */
 
-  /* ---- PDF button (desktop chrome) ---- */
-  .pdf-btn{ position:fixed; top:18px; right:74px; z-index:300; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.06em; padding:6px 11px; border-radius:999px; border:1px solid var(--border-soft); background:var(--card); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); transition:transform .15s, border-color .15s; }
-  .pdf-btn:hover{ transform:translateY(-1px); border-color:var(--ink); }
+  /* ---- PDF button — subtle, bottom-right (where the keyboard hint used to be) ---- */
+  .pdf-btn{ position:fixed; right:24px; bottom:18px; z-index:300; display:inline-flex; align-items:center; gap:6px;
+            font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+            padding:5px 9px; border-radius:8px; border:1px solid transparent; background:none; color:var(--muted);
+            cursor:pointer; transition:color .15s ease, border-color .15s ease, background .15s ease; }
+  .pdf-btn svg{ display:block; width:13px; height:13px; opacity:.85; }
+  .pdf-btn:hover{ color:var(--ink); border-color:var(--border-soft); background:var(--card); }
+  .pdf-btn.on-dark{ color:rgba(255,255,255,.55); }
+  .pdf-btn.on-dark:hover{ color:#fff; border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.08); }
   @media (max-width:760px){ .pdf-btn{ display:none; } }
 
   /* ---- Splash (landing gate) — warm, on the Bayes design system ---- */
