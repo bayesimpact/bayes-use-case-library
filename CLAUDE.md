@@ -78,6 +78,11 @@ in user-facing deck text (FR + EN). Use a comma, a period (two short sentences),
 parentheses instead. `·` middots and `→` arrows for lists/flows are fine; the ban is specifically the
 `—` em dash as a prose connector.
 
+**Airy and épuré.** We like calm, uncluttered layouts. Favour whitespace and restraint: **one idea per
+slide**, generous margins, large type, few elements. If a slide feels busy, **cut content rather than
+shrink it**. Empty space is a feature, not a gap. This is the difference between an on-brand deck and a
+*usine à gaz*: maximalist scaffold, minimalist result.
+
 **Chrome is automatic — never add it.** `bayes.js` injects:
 - a **top nav** matching the site — translucent/blurred, with the **Bayes logo (backlink to
   bayesimpact.org)**, the **section label** (`data-label-fr/en` on `<body>`), a **language dropdown**
