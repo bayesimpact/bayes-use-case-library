@@ -52,20 +52,34 @@
   .pscope .va{ height:34px; }
   .pscope b{ font-size:18px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
   .pscope span{ font-size:12px; color:var(--muted); }
+  /* meta-agent router ("it's a platform") */
+  .ma-req{ display:inline-block; background:var(--ink); color:#fff; border-radius:14px 14px 14px 4px; padding:9px 15px; font-size:14px; }
+  .ma-fan{ text-align:center; color:var(--accent-orange); font-weight:800; font-size:13px; letter-spacing:8px; padding:5px 0; }
+  .ma-router{ background:linear-gradient(180deg,#fff,rgba(255,132,0,.07)); border:2px solid var(--accent-orange); border-radius:14px; padding:12px 18px; box-shadow:0 0 0 3px rgba(255,132,0,.1), var(--shadow); }
+  .ma-router .k{ font-family:'JetBrains Mono',monospace; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-orange); margin-bottom:3px; }
+  .ma-router .t{ font-size:13.5px; color:var(--ink-soft); line-height:1.45; }
+  .ma-subs{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:2px; }
+  .ma-sub{ background:var(--card); border:1px solid var(--border-soft); border-radius:11px; padding:11px 13px; box-shadow:var(--shadow); }
+  .ma-sub .n{ font-weight:700; font-size:13px; color:var(--ink); }
+  .ma-sub .s{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ok); margin-top:5px; }
+  .ma-sub.off{ opacity:.65; border-style:dashed; background:var(--cream); }
+  .ma-sub.off .s{ color:var(--muted); }
+  .ma-sub.new{ border-style:dashed; color:var(--muted); display:flex; align-items:center; justify-content:center; font-weight:600; font-size:12.5px; box-shadow:none; background:none; }
+  @media (max-width:1100px){ .ma-subs{ grid-template-columns:1fr 1fr; } }
 
   /* ── team ── */
-  .team{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; max-width:900px; }
-  .tm{ background:var(--card); border:1px solid var(--border-soft); border-radius:14px; padding:16px 16px 18px; box-shadow:var(--shadow); }
+  .team{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:14px; max-width:900px; }
+  .tm{ background:var(--card); border:1px solid var(--border-soft); border-radius:14px; padding:14px 16px 15px; box-shadow:var(--shadow); }
   .tm-n{ font-weight:700; font-size:15.5px; color:var(--ink); }
   .tm-r{ font-size:12.5px; color:var(--muted); margin-top:3px; line-height:1.4; }
   /* leadership cards (photo + bio) */
   .av{ width:60px; height:60px; border-radius:50%; object-fit:cover; display:block; background:var(--cream); border:1px solid var(--border-soft); }
   .av-ph{ display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-weight:700; font-size:17px; color:var(--muted); }
-  .tm .av{ margin-bottom:13px; }
+  .tm .av{ width:54px; height:54px; margin-bottom:8px; }
   .tm-role{ font-size:11.5px; font-weight:700; color:var(--ink-soft); margin-top:4px; letter-spacing:.01em; }
-  .tm-bio{ font-size:11.5px; color:var(--muted); line-height:1.45; margin-top:8px; }
+  .tm-bio{ font-size:11.5px; color:var(--muted); line-height:1.4; margin-top:6px; }
   /* the rest of the team (compact: small avatar + name + role) */
-  .team-rest{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px 18px; margin-top:14px; }
+  .team-rest{ display:grid; grid-template-columns:repeat(5,1fr); gap:22px 18px; margin-top:26px; }
   .trc{ display:flex; align-items:center; gap:10px; }
   .trc .av{ width:40px; height:40px; flex:0 0 auto; }
   .trc .av-ph{ font-size:12px; }
@@ -85,6 +99,25 @@
   .hc-k{ font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--accent-blue); }
   .hc-t{ font-weight:700; font-size:14px; color:var(--ink); margin-top:5px; }
   .hc-e{ font-size:12px; color:var(--muted); margin-top:5px; line-height:1.45; }
+
+  /* ── Bayes Platform workspace (Impulse-style agent grid) ── */
+  .ws{ background:var(--card); border:1px solid var(--border-soft); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-top:10px; }
+  .ws-bar{ display:flex; align-items:center; gap:11px; padding:10px 15px; border-bottom:1px solid var(--border-soft); background:linear-gradient(180deg,#fff,var(--cream)); }
+  .ws-bar .mk{ width:18px; height:18px; flex:0 0 auto; }
+  .ws-bar .tt{ font-weight:700; font-size:13px; color:var(--ink); }
+  .ws-bar .tt small{ font-weight:500; color:var(--muted); font-size:11.5px; }
+  .ws-search{ margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); background:var(--bg); border:1px solid var(--border-soft); border-radius:8px; padding:4px 11px; }
+  .ws-body{ padding:14px; }
+  .ws-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .ws-card{ background:var(--bg); border:1px solid var(--border-soft); border-radius:12px; padding:12px 13px; transition:transform .15s, box-shadow .15s; }
+  .ws-card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+  .ws-card .ico{ font-size:17px; line-height:1; }
+  .ws-card .cat{ font-family:'JetBrains Mono',monospace; font-size:9px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--accent-blue); margin-top:7px; }
+  .ws-card .nm{ font-weight:700; font-size:13.5px; color:var(--ink); margin-top:2px; }
+  .ws-card .ds{ font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4; }
+  .ws-card .st{ display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--ok); margin-top:9px; }
+  .ws-card .st i{ width:6px; height:6px; border-radius:50%; background:var(--ok); display:block; }
+  .ws-card .st.eval{ color:var(--accent-orange); } .ws-card .st.eval i{ background:var(--accent-orange); }
 
   /* ── France Travail browser mock ── */
   .ftb{ border-radius:14px; border:1px solid var(--border-soft); box-shadow:var(--shadow); overflow:hidden; background:var(--card); max-width:900px; margin-top:6px; }
@@ -118,9 +151,44 @@
   .intro-state .eyebrow{ color:var(--accent-orange); }
   .intro-state h1{ font-size:clamp(40px,6.6vw,88px); line-height:1; letter-spacing:-.035em; font-weight:800; margin:0; color:#fff; max-width:16ch; }
   .intro-state .lead{ color:rgba(255,255,255,.82); max-width:46ch; margin-top:22px; }
+  .istate-grid{ display:grid; grid-template-columns:1.02fr .98fr; gap:46px; align-items:center; }
+  .istate-grid h1{ font-size:clamp(34px,4.6vw,58px); max-width:13ch; }
+  .istate-grid .lead{ max-width:42ch; margin-top:18px; }
+  .gh-btn{ display:inline-flex; align-items:center; gap:10px; margin-top:24px; padding:11px 16px; border-radius:11px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22); color:#fff; font-weight:600; font-size:13.5px; text-decoration:none; transition:background .15s, border-color .15s; }
+  .gh-btn:hover{ background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.4); }
+  .gh-btn svg{ width:18px; height:18px; fill:#fff; flex:0 0 auto; }
+  .gh-btn .mono{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:rgba(255,255,255,.62); font-weight:500; }
+  /* high-level workspace mockup (dark) */
+  .dws{ background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.16); border-radius:16px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.38); }
+  .dws-bar{ display:flex; align-items:center; gap:7px; padding:11px 15px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .dws-bar .d{ width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.22); display:block; }
+  .dws-bar .t{ margin-left:9px; font-weight:700; font-size:12px; color:rgba(255,255,255,.82); }
+  .dws-bar .t small{ font-weight:500; color:rgba(255,255,255,.45); }
+  .dws-main{ display:grid; grid-template-columns:118px 1fr; }
+  .dws-side{ padding:12px 9px; border-right:1px solid rgba(255,255,255,.1); display:flex; flex-direction:column; gap:3px; }
+  .dws-side .s-item{ font-size:11.5px; color:rgba(255,255,255,.5); padding:6px 9px; border-radius:8px; }
+  .dws-side .s-item.on{ background:rgba(255,132,0,.2); color:#fff; font-weight:600; }
+  .dws-list{ padding:11px 12px; display:flex; flex-direction:column; gap:7px; }
+  .dws-list .row{ display:flex; align-items:center; gap:10px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:9px 11px; }
+  .dws-list .row .ic{ font-size:14px; line-height:1; flex:0 0 auto; }
+  .dws-list .row .nm{ font-size:12.5px; color:#fff; font-weight:600; flex:1; }
+  .dws-list .badge{ font-family:'JetBrains Mono',monospace; font-size:8.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 7px; border-radius:6px; flex:0 0 auto; }
+  .dws-list .badge.ok{ background:rgba(46,160,67,.22); color:#86E3AC; }
+  .dws-list .badge.run{ background:rgba(255,132,0,.2); color:#FFC07A; }
+  .dws-list .add{ justify-content:center; color:rgba(255,255,255,.5); border-style:dashed; background:none; font-size:12px; }
+  @media (max-width:980px){ .istate-grid{ grid-template-columns:1fr; gap:26px; } .istate-grid h1{ max-width:16ch; } }
 
+  /* ── section divider (intercalaire) ── */
+  .secdiv{ background:linear-gradient(125deg, rgba(255,132,0,.14) 0%, rgba(255,132,0,.04) 38%, rgba(16,103,254,.07) 100%), var(--bg); }
+  .secdiv .slide-inner{ display:flex; flex-direction:column; justify-content:center; }
+  .secdiv .num{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-orange); }
+  .secdiv h2{ font-size:clamp(46px,7vw,92px); line-height:1; letter-spacing:-.035em; font-weight:800; margin:16px 0 0; max-width:16ch; color:var(--ink); }
+  .secdiv .sub{ font-size:18px; line-height:1.5; color:var(--ink-soft); margin-top:22px; max-width:50ch; }
+  .secdiv .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:30px; }
+  .secdiv .chips span{ background:var(--card); border:1px solid var(--border-soft); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; color:var(--ink); box-shadow:var(--shadow); }
   /* ── focus use-case: subtle on-brand background + faint brand-mark watermark ── */
   .slide.usecase .slide-inner{ position:relative; z-index:1; }
+  .slide.usecase{ background:linear-gradient(180deg, rgba(255,132,0,.04) 0%, transparent 42%), var(--bg); }
   .slide.usecase.focus{ background:radial-gradient(58% 78% at 88% 2%, rgba(16,103,254,.06) 0%, transparent 52%), radial-gradient(48% 60% at 4% 98%, rgba(255,132,0,.045) 0%, transparent 55%), var(--bg); }
   .uc-watermark{ position:absolute; right:-70px; bottom:-90px; z-index:0; pointer-events:none; opacity:.04; }
   .uc-watermark svg{ display:block; width:420px; height:auto; }
@@ -261,83 +329,39 @@
     </div>
   </section>
 
-  <!-- 4 · TEAM -->
-  <section class="slide" id="team">
-    <div class="slide-inner">
-      <p class="eyebrow reveal"><span data-lang="fr">L'équipe</span><span data-lang="en">The team</span></p>
-      <h2 class="title reveal" style="max-width:28ch"><span data-lang="fr">Une équipe du <em class="hl">service public et de la tech</em>.</span><span data-lang="en">A team from <em class="hl">public service and tech</em>.</span></h2>
-      <div class="team reveal">
-        <div class="tm">
-          <img class="av" src="../../assets/team/paul.jpg" alt="Paul Duan" />
-          <div class="tm-n">Paul Duan</div>
-          <div class="tm-role"><span data-lang="fr">Fondateur &amp; Président</span><span data-lang="en">Founder &amp; President</span></div>
-          <div class="tm-bio"><span data-lang="fr">Entrepreneur social et data scientist. Reconnu par Forbes, Ashoka et le MIT Technology Review.</span><span data-lang="en">Social entrepreneur and data scientist. Recognized by Forbes, Ashoka and MIT Technology Review.</span></div>
-        </div>
-        <div class="tm">
-          <img class="av" src="../../assets/team/elodie.jpg" alt="Elodie Juan-Julia" />
-          <div class="tm-n">Elodie Juan-Julia</div>
-          <div class="tm-role">COO</div>
-          <div class="tm-bio"><span data-lang="fr">15+ ans de direction en scale-up. Ex-CFO de Dogami, Head of Finance chez Datadog.</span><span data-lang="en">15+ years of scale-up leadership. Former CFO at Dogami, Head of Finance at Datadog.</span></div>
-        </div>
-        <div class="tm">
-          <img class="av" src="../../assets/team/jeremie.jpg" alt="Jérémie Doucy" />
-          <div class="tm-n">Jérémie Doucy, PhD</div>
-          <div class="tm-role">CTO</div>
-          <div class="tm-bio"><span data-lang="fr">Doctorat en TAL. 15+ ans d'ingénierie logicielle et IA, dont Airbus.</span><span data-lang="en">PhD in NLP. 15+ years in software and AI engineering, including Airbus.</span></div>
-        </div>
-      </div>
-      <div class="team-rest reveal">
-        <div class="trc"><span class="av av-ph">AA</span><div><div class="trc-n">Augustin Ador</div><div class="trc-r"><span data-lang="fr">Lead Forward Deployed Engineer · ex-Dataiku</span><span data-lang="en">Lead Forward Deployed Engineer · ex-Dataiku</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/carine.jpg" alt="Carine Sit" /><div><div class="trc-n">Carine Sit</div><div class="trc-r"><span data-lang="fr">Directrice des programmes</span><span data-lang="en">Programs Director</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/vincent.jpg" alt="Vincent Vercamer" /><div><div class="trc-n">Vincent Vercamer, PhD</div><div class="trc-r"><span data-lang="fr">Directeur Santé · ex-Délégation au Numérique en Santé</span><span data-lang="en">Health Director · ex-Digital Health Delegation</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/alexis.jpg" alt="Alexis Jamet" /><div><div class="trc-n">Alexis Jamet</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/anna.jpg" alt="Anna Bauer" /><div><div class="trc-n">Anna Bauer</div><div class="trc-r"><span data-lang="fr">Directrice marketing</span><span data-lang="en">Marketing Director</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/noe.jpg" alt="Noé Bosc-Haddad" /><div><div class="trc-n">Noé Bosc-Haddad</div><div class="trc-r">Data Scientist</div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/didier.jpg" alt="Didier Lafforgue" /><div><div class="trc-n">Didier Lafforgue</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/olivier.jpg" alt="Olivier Doucy" /><div><div class="trc-n">Olivier Doucy</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/melissa.jpg" alt="Mélissa Lacombe" /><div><div class="trc-n">Mélissa Lacombe</div><div class="trc-r">Communications</div></div></div>
-        <div class="trc"><img class="av" src="../../assets/team/neva.jpg" alt="Neva Sainte-Marie" /><div><div class="trc-n">Neva Sainte-Marie</div><div class="trc-r"><span data-lang="fr">Opérations</span><span data-lang="en">Operations</span></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 · REFERENCES -->
-  <section class="slide" id="references">
-    <div class="slide-inner">
-      <p class="eyebrow reveal"><span data-lang="fr">Références</span><span data-lang="en">References</span></p>
-      <h2 class="title reveal" style="max-width:26ch"><span data-lang="fr">Ils nous <em class="hl">font confiance</em>.</span><span data-lang="en">They <em class="hl">trust us</em>.</span></h2>
-      <div class="reveal" style="margin-top:30px">
-        <div class="refs-lab"><span data-lang="fr">Institutions publiques &amp; partenaires</span><span data-lang="en">Public institutions &amp; partners</span></div>
-        <div class="partners-grid" style="justify-content:flex-start; gap:26px 34px; margin-bottom:24px">
-          <img src="../../assets/partners/france-travail.webp" alt="France Travail" />
-          <img src="../../assets/partners/ministere-travail.webp" alt="Ministère du Travail" />
-          <img src="../../assets/partners/ap-hp.webp" alt="AP-HP" />
-          <img src="../../assets/partners/assurance-maladie.webp" alt="L'Assurance Maladie" />
-          <img src="../../assets/partners/dinum.webp" alt="DINUM" />
-          <img src="../../assets/partners/caisse-des-depots.webp" alt="Caisse des Dépôts" />
-          <img src="../../assets/partners/actiris.webp" alt="Actiris · Bruxelles" />
-          <img src="../../assets/partners/uk-dwp.webp" alt="UK Dept for Work and Pensions" />
-          <img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
-          <img src="../../assets/partners/togo.webp" alt="Government of Togo" />
-        </div>
-        <div class="refs-lab"><span data-lang="fr">Financeurs &amp; soutiens</span><span data-lang="en">Funders &amp; supporters</span></div>
-        <div class="partners-grid" style="justify-content:flex-start; gap:26px 34px">
-          <img src="../../assets/partners/google.webp" alt="Google.org" />
-          <img src="../../assets/partners/gates.webp" alt="Gates Foundation" />
-          <img src="../../assets/partners/yc.webp" alt="Y Combinator" />
-          <img src="../../assets/partners/rwjf.webp" alt="Robert Wood Johnson Foundation" />
-          <img src="../../assets/partners/fast-forward.webp" alt="Fast Forward" />
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 5 · INTRODUCING THE BAYES PLATFORM (statement) -->
   <section class="slide dark intro-state" id="introducing" data-dark>
     <div class="slide-inner">
-      <p class="eyebrow reveal"><span data-lang="fr">Notre produit</span><span data-lang="en">Our product</span></p>
-      <h1 class="reveal"><span data-lang="fr">Voici la <em class="hl">Bayes Platform</em>.</span><span data-lang="en">Introducing the <em class="hl">Bayes Platform</em>.</span></h1>
-      <p class="lead reveal"><span data-lang="fr">La plateforme open-source d'agents IA qui transforme ces cas d'usage en services en production, sur l'infrastructure des organisations qui les déploient.</span><span data-lang="en">The open-source AI agent platform that turns these use cases into production services, on the infrastructure of the organizations that run them.</span></p>
+      <div class="istate-grid">
+        <div>
+          <p class="eyebrow reveal"><span data-lang="fr">Notre produit</span><span data-lang="en">Our product</span></p>
+          <h1 class="reveal"><span data-lang="fr">Voici la <em class="hl">Bayes Platform</em>.</span><span data-lang="en">Introducing the <em class="hl">Bayes Platform</em>.</span></h1>
+          <p class="lead reveal"><span data-lang="fr">La plateforme open-source d'agents IA qui transforme ces cas d'usage en services en production, sur l'infrastructure des organisations qui les déploient.</span><span data-lang="en">The open-source AI agent platform that turns these use cases into production services, on the infrastructure of the organizations that run them.</span></p>
+          <a class="gh-btn reveal" href="https://github.com/bayesimpact/agent-studio" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span><span data-lang="fr">Open-source</span><span data-lang="en">Open-source</span></span>
+            <span class="mono">github.com/bayesimpact/agent-studio</span>
+          </a>
+        </div>
+        <div class="dws reveal" aria-hidden="true">
+          <div class="dws-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">Bayes Platform <small>· workspace</small></span></div>
+          <div class="dws-main">
+            <div class="dws-side">
+              <div class="s-item on">▦ Agents</div>
+              <div class="s-item">◍ Sources</div>
+              <div class="s-item">◐ Évaluations</div>
+              <div class="s-item">◔ Observabilité</div>
+            </div>
+            <div class="dws-list">
+              <div class="row"><span class="ic">🧬</span><span class="nm">Copilote clinicien</span><span class="badge ok">déployé</span></div>
+              <div class="row"><span class="ic">💬</span><span class="nm">Assistant citoyen</span><span class="badge ok">déployé</span></div>
+              <div class="row"><span class="ic">📋</span><span class="nm">Appui aux protocoles</span><span class="badge ok">déployé</span></div>
+              <div class="row"><span class="ic">📊</span><span class="nm">Analytique métier</span><span class="badge run">en éval</span></div>
+              <div class="row add">+ <span data-lang="fr">nouvel agent</span><span data-lang="en">new agent</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="cover-foot"><span>bayesimpact.org</span><span class="cf-r">Bayes Platform</span></div>
   </section>
@@ -348,11 +372,11 @@
       <p class="eyebrow reveal"><span data-lang="fr">Ce qui nous distingue</span><span data-lang="en">What sets us apart</span></p>
       <h2 class="title reveal" style="max-width:24ch"><span data-lang="fr">Pas un générateur d'agents <em class="hl">générique</em>.</span><span data-lang="en">Not a generic <em class="hl">agent builder</em>.</span></h2>
       <p class="lead reveal" style="margin-top:4px; max-width:64ch"><span data-lang="fr">Un cas d'usage de service public a des exigences qu'un assistant générique ignore. La Bayes Platform les traite <b>par défaut</b>, prête à l'emploi.</span><span data-lang="en">A public-service use case has requirements a generic assistant ignores. The Bayes Platform handles them <b>by default</b>, out of the box.</span></p>
-      <div class="cards c2 reveal" style="margin-top:18px">
+      <div class="cards c2 reveal" style="margin-top:16px">
         <div class="card">
           <div class="kicker"><span data-lang="fr">Protocoles à la lettre</span><span data-lang="en">Protocols to the letter</span></div>
           <h3><span data-lang="fr">Pas un RAG générique</span><span data-lang="en">Not a dumb generic RAG</span></h3>
-          <p><span data-lang="fr">L'agent suit <b>vos protocoles officiels</b>, sources citées, sans dériver vers le web ouvert. Démo MCP santé à suivre.</span><span data-lang="en">The agent follows <b>your official protocols</b>, sources cited, never drifting to the open web. MCP health demo next.</span></p>
+          <p><span data-lang="fr">L'agent suit <b>vos protocoles officiels</b>, sources citées, sans dériver vers le web ouvert.</span><span data-lang="en">The agent follows <b>your official protocols</b>, sources cited, never drifting to the open web.</span></p>
         </div>
         <div class="card">
           <div class="kicker"><span data-lang="fr">Analytique métier</span><span data-lang="en">Business analytics</span></div>
@@ -362,12 +386,23 @@
         <div class="card">
           <div class="kicker"><span data-lang="fr">Validation avant production</span><span data-lang="en">Validation before production</span></div>
           <h3><span data-lang="fr">Campagnes d'expérimentation</span><span data-lang="en">Experimentation campaigns</span></h3>
-          <p><span data-lang="fr">Testez et faites valider les réponses par des experts, à l'aveugle, <b>avant tout lancement</b> en production.</span><span data-lang="en">Test and have experts validate answers, blind, <b>before any production</b> launch.</span></p>
+          <p><span data-lang="fr">Faites valider les réponses par des experts, à l'aveugle, <b>avant tout lancement</b> en production.</span><span data-lang="en">Have experts validate answers, blind, <b>before any production</b> launch.</span></p>
         </div>
-        <div class="card feat">
-          <div class="kicker"><span data-lang="fr">Sécurité par défaut</span><span data-lang="en">Safe by default</span></div>
-          <h3><span data-lang="fr">Éviter le faux pas public</span><span data-lang="en">Avoid the public misstep</span></h3>
-          <p><span data-lang="fr">Le chatbot emploi autrichien (AMS) a reproduit des biais de genre, en plein débat public. L'atténuation des biais est <b>intégrée d'origine</b>, pas une option.</span><span data-lang="en">Austria's AMS employment chatbot reproduced gender bias, amid public outcry. Bias mitigation is <b>built in from day one</b>, not an afterthought.</span></p>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">Ouvert &amp; souverain</span><span data-lang="en">Open &amp; sovereign</span></div>
+          <h3><span data-lang="fr">Votre data sous contrôle</span><span data-lang="en">Your data, under control</span></h3>
+          <p><span data-lang="fr">Open-source : dans le cloud ou on-premise sur votre infra, avec vos LLMs (frontières ou open-weights). La donnée de vos bénéficiaires reste maîtrisée.</span><span data-lang="en">Open-source: in the cloud or on-premise on your own infra, with your choice of LLMs (frontier or open-weight). Your beneficiaries' data stays under your control.</span></p>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:0;align-items:stretch;margin-top:16px;background:var(--card);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);max-width:900px;">
+        <div style="flex:0 0 130px;background:linear-gradient(135deg,#b3261e,#7a1a15);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:14px;text-align:center;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;opacity:.85;">OECD.AI</span>
+          <span style="font-size:26px;line-height:1;">⚠</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.06em;opacity:.8;">AI INCIDENT · 2024</span>
+        </div>
+        <div style="flex:1 1 auto;padding:13px 17px;">
+          <div style="font-weight:700;font-size:14px;color:var(--ink);"><span data-lang="fr">Un chatbot d'emploi public (AMS, Autriche) a reproduit des biais de genre.</span><span data-lang="en">A public employment chatbot (Austria's AMS) reproduced gender bias.</span></div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:6px;"><span data-lang="fr">Le faire soi-même, c'est mille subtilités à maîtriser : le dilemme entre souveraineté et réinventer la roue. Les briques ci-dessus sont précisément ce qui l'évite. </span><span data-lang="en">Building it yourself means a thousand subtleties to get right: the dilemma between sovereignty and reinventing the wheel. The bricks above are exactly what prevents it. </span><a href="https://oecd.ai/en/incidents/2024-01-04-47fe" target="_blank" rel="noopener" style="color:var(--accent-blue);font-weight:600;text-decoration:none;white-space:nowrap;">oecd.ai ↗</a></div>
         </div>
       </div>
     </div>
@@ -375,6 +410,53 @@
 
   <!-- 6 · PLATFORM as the OS on your secured foundations -->
   <div data-shared="platform-compliance"></div>
+
+  <!-- META-AGENT — a platform, not a collection of prototypes -->
+  <section class="slide" id="meta-agent">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Une plateforme, pas des prototypes</span><span data-lang="en">A platform, not a pile of prototypes</span></p>
+      <h2 class="title reveal" style="max-width:26ch"><span data-lang="fr">Un méta-agent qui <em class="hl">route vers le bon sous-agent</em>.</span><span data-lang="en">One meta-agent that <em class="hl">routes to the right sub-agent</em>.</span></h2>
+      <div class="reveal" style="margin-top:14px;max-width:900px;">
+        <span class="ma-req">«&nbsp;<span data-lang="fr">Je veux inscrire mon enfant à la crèche.</span><span data-lang="en">I'd like to enrol my child in daycare.</span>&nbsp;»</span>
+        <div class="ma-fan">↓</div>
+        <div class="ma-router">
+          <div class="k"><span data-lang="fr">Méta-agent · niveau organisation</span><span data-lang="en">Meta-agent · organization level</span></div>
+          <div class="t"><span data-lang="fr">Identifie le besoin et l'éligibilité, puis route vers le bon sous-agent spécialisé.</span><span data-lang="en">Identifies the need and the entitlements, then routes to the right specialized sub-agent.</span></div>
+        </div>
+        <div class="ma-fan">↓&nbsp;&nbsp;↓&nbsp;&nbsp;↓</div>
+        <div class="ma-subs">
+          <div class="ma-sub"><div class="n"><span data-lang="fr">Éligibilité &amp; aides</span><span data-lang="en">Eligibility &amp; benefits</span></div><div class="s">✓ <span data-lang="fr">testé · déployé · monitoré</span><span data-lang="en">tested · deployed · monitored</span></div></div>
+          <div class="ma-sub"><div class="n"><span data-lang="fr">Pièces justificatives</span><span data-lang="en">Required documents</span></div><div class="s">✓ <span data-lang="fr">testé · déployé · monitoré</span><span data-lang="en">tested · deployed · monitored</span></div></div>
+          <div class="ma-sub"><div class="n"><span data-lang="fr">Prise de rendez-vous</span><span data-lang="en">Appointment booking</span></div><div class="s">✓ <span data-lang="fr">testé · déployé · monitoré</span><span data-lang="en">tested · deployed · monitored</span></div></div>
+          <div class="ma-sub"><div class="n"><span data-lang="fr">Suivi du dossier</span><span data-lang="en">Case follow-up</span></div><div class="s">✓ <span data-lang="fr">testé · déployé · monitoré</span><span data-lang="en">tested · deployed · monitored</span></div></div>
+          <div class="ma-sub off"><div class="n"><span data-lang="fr">Renouvellement de passeport</span><span data-lang="en">Passport renewal</span></div><div class="s"><span data-lang="fr">pas encore implémenté</span><span data-lang="en">not implemented yet</span></div></div>
+          <div class="ma-sub new"><span data-lang="fr">+ nouveau cas d'usage</span><span data-lang="en">+ new use case</span></div>
+        </div>
+      </div>
+      <p class="footnote reveal" style="margin-top:14px"><span data-lang="fr">Chaque sous-agent est <b>testé, déployé et monitoré indépendamment</b> (fiabilité maximale), et l'agent <b>sait quand il n'a pas l'outil</b>. Commencez simple, enrichissez le périmètre.</span><span data-lang="en">Each sub-agent is <b>tested, deployed and monitored independently</b> (for maximum reliability), and the agent <b>knows when it lacks the tool</b>. Start simple, grow the scope.</span></p>
+    </div>
+  </section>
+
+  <!-- 8–13 · PLATFORM SHOWCASE (how it works · why you can trust it) -->
+  <div data-shared="platform-grounding"></div>
+  <div data-shared="platform-sources"></div>
+  <div data-shared="platform-studio"></div>
+  <div data-shared="platform-privacy"></div>
+
+  <!-- SECTION DIVIDER — use cases in action -->
+  <section class="slide secdiv" id="sec-usecases">
+    <div class="slide-inner">
+      <p class="num reveal"><span data-lang="fr">Partie 02 · Cas d'usage</span><span data-lang="en">Part 02 · Use cases</span></p>
+      <h2 class="reveal"><span data-lang="fr">La plateforme <em class="hl">en action</em>.</span><span data-lang="en">The platform <em class="hl">in action</em>.</span></h2>
+      <p class="sub reveal"><span data-lang="fr">Des agents en production, sur le terrain : emploi, santé, services publics. Tous bâtis sur la même plateforme, déployés sur l'infrastructure de chaque organisation.</span><span data-lang="en">Agents in production, in the field: employment, healthcare, public services. All built on the same platform, deployed on each organization's infrastructure.</span></p>
+      <div class="chips reveal">
+        <span>💼 <span data-lang="fr">Emploi · France Travail</span><span data-lang="en">Employment · France Travail</span></span>
+        <span>🏥 <span data-lang="fr">Santé · AP-HP</span><span data-lang="en">Healthcare · AP-HP</span></span>
+        <span>📊 <span data-lang="fr">Analytique métier</span><span data-lang="en">Operational analytics</span></span>
+        <span>🇹🇬 <span data-lang="fr">Services publics · Togo</span><span data-lang="en">Public services · Togo</span></span>
+      </div>
+    </div>
+  </section>
 
   <!-- 7 · USE CASE — France Travail (CoachFT) -->
   <section class="slide usecase" id="uc-francetravail">
@@ -413,13 +495,8 @@
     </div>
   </section>
 
-  <!-- 8–13 · PLATFORM SHOWCASE (how it works · why you can trust it) -->
-  <div data-shared="platform-grounding"></div>
-  <div data-shared="platform-sources"></div>
-  <div data-shared="platform-studio"></div>
-  <div data-shared="platform-privacy"></div>
   <!-- INTERACTIVE MCP DEMO — a grounded back-office copilot (tool-calling + cited answers) -->
-  <section class="slide" id="demo-copilot" data-demo="copilot">
+  <section class="slide usecase" id="demo-copilot" data-demo="copilot">
     <div class="slide-inner">
       <div class="demo-head reveal"><h2><span data-lang="fr">Un copilote ancré dans vos systèmes</span><span data-lang="en">A copilot grounded in your systems</span></h2><span class="dh-sub"><span data-lang="fr">Via MCP, l'agent interroge vos back-offices en bac à sable et répond en langage clair, sources à l'appui.</span><span data-lang="en">Through MCP, the agent queries your back-offices in a sandbox and answers in plain language, with sources.</span></span></div>
       <div class="copilot reveal">
@@ -454,18 +531,27 @@
   <section class="slide usecase" id="uc-health">
     <div class="slide-inner">
       <p class="uc-tag reveal"><span data-lang="fr">Cas d'usage · Santé</span><span data-lang="en">Use case · Healthcare</span></p>
-      <h2 class="title reveal" style="max-width:30ch"><span data-lang="fr">Des dizaines de cas d'usage, <em class="hl">au service des soignants et des patients</em>.</span><span data-lang="en">Dozens of use cases, <em class="hl">serving caregivers and patients</em>.</span></h2>
+      <h2 class="title reveal" style="max-width:32ch"><span data-lang="fr">Focus santé : les cas d'usage que <em class="hl">la plateforme ouvre à l'hôpital public</em>.</span><span data-lang="en">Healthcare focus: the use cases <em class="hl">the platform unlocks for public hospitals</em>.</span></h2>
       <div class="pscope reveal"><img src="../../assets/partners/ap-hp.webp" alt="AP-HP" /><div><b>8M+</b> <span data-lang="fr">patients/an à l'AP-HP, dans le périmètre</span><span data-lang="en">patients/yr at AP-HP, in the use-case scope</span></div></div>
-      <p class="lead reveal" style="margin-top:4px; max-width:64ch"><span data-lang="fr">Dans les hôpitaux publics, les besoins remontent du terrain. Notre programme d'accompagnement <b>Impulse</b> les transforme en agents, déployés sur la Bayes Platform.</span><span data-lang="en">In public hospitals, needs come from the ground up. Our <b>Impulse</b> program turns them into agents, deployed on the Bayes Platform.</span></p>
-      <div class="hc-grid reveal">
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Interprétation clinique</span><span data-lang="en">Clinical insights</span></div><div class="hc-t"><span data-lang="fr">Lire &amp; expliquer les résultats</span><span data-lang="en">Read &amp; explain results</span></div><div class="hc-e"><span data-lang="fr">Génétique, immunologie, nutrition : aider le clinicien à interpréter analyses et examens.</span><span data-lang="en">Genetics, immunology, nutrition: help clinicians interpret tests and results.</span></div></div>
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Appui aux protocoles</span><span data-lang="en">Protocol support</span></div><div class="hc-t"><span data-lang="fr">Le bon protocole, étape par étape</span><span data-lang="en">The right protocol, step by step</span></div><div class="hc-e"><span data-lang="fr">Urgences, réanimation néonatale : identifier le protocole et en suivre chaque étape.</span><span data-lang="en">Emergency, neonatal ICU: find the protocol and follow each step.</span></div></div>
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Appui à la recherche</span><span data-lang="en">Research support</span></div><div class="hc-t"><span data-lang="fr">Revues &amp; éligibilité aux essais</span><span data-lang="en">Reviews &amp; trial eligibility</span></div><div class="hc-e"><span data-lang="fr">Évaluer la pertinence d'articles, analyser les dossiers pour les critères d'inclusion.</span><span data-lang="en">Screen articles, analyse records against inclusion criteria.</span></div></div>
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Éducation &amp; suivi patient</span><span data-lang="en">Patient education</span></div><div class="hc-t"><span data-lang="fr">Informer &amp; rassurer les patients</span><span data-lang="en">Inform &amp; reassure patients</span></div><div class="hc-e"><span data-lang="fr">Anesthésie pédiatrique, chirurgie, PMA, prévention : répondre aux questions fréquentes.</span><span data-lang="en">Paediatric anaesthesia, surgery, ART, prevention: answer common questions.</span></div></div>
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Pré-consultation</span><span data-lang="en">Pre-consultation</span></div><div class="hc-t"><span data-lang="fr">Qualifier avant le rendez-vous</span><span data-lang="en">Qualify before the visit</span></div><div class="hc-e"><span data-lang="fr">Oncologie, cardiologie, orthopédie, gériatrie : recueillir et structurer les données.</span><span data-lang="en">Oncology, cardiology, orthopaedics, geriatrics: collect and structure data.</span></div></div>
-        <div class="hc"><div class="hc-k"><span data-lang="fr">Qualité &amp; sécurité</span><span data-lang="en">Quality &amp; safety</span></div><div class="hc-t"><span data-lang="fr">Signaler &amp; analyser</span><span data-lang="en">Report &amp; analyse</span></div><div class="hc-e"><span data-lang="fr">Déclaration d'événements indésirables, lecture des indicateurs qualité.</span><span data-lang="en">Adverse-event reporting, reading quality &amp; safety indicators.</span></div></div>
+      <p class="lead reveal" style="margin-top:4px; max-width:66ch"><span data-lang="fr">Les besoins remontent du terrain ; notre programme <b>Impulse</b> les transforme en agents, déployés et monitorés côte à côte sur la Bayes Platform.</span><span data-lang="en">Needs come from the ground up; our <b>Impulse</b> program turns them into agents, deployed and monitored side by side on the Bayes Platform.</span></p>
+      <div class="ws reveal">
+        <div class="ws-bar">
+          <svg class="mk" viewBox="0 0 415 409" aria-hidden="true"><use href="#bi-mark"/></svg>
+          <div class="tt">Bayes Platform <small><span data-lang="fr">· espace de travail AP-HP</span><span data-lang="en">· AP-HP workspace</span></small></div>
+          <span class="ws-search"><span data-lang="fr">rechercher un agent…</span><span data-lang="en">search an agent…</span></span>
+        </div>
+        <div class="ws-body">
+          <div class="ws-grid">
+            <div class="ws-card"><div class="ico">🧬</div><div class="cat"><span data-lang="fr">Clinique</span><span data-lang="en">Clinical</span></div><div class="nm"><span data-lang="fr">Interprétation clinique</span><span data-lang="en">Clinical insights</span></div><div class="ds"><span data-lang="fr">Lire &amp; expliquer analyses et examens : génétique, immuno, nutrition.</span><span data-lang="en">Read &amp; explain tests and results: genetics, immunology, nutrition.</span></div><div class="st"><i></i><span data-lang="fr">déployé · monitoré</span><span data-lang="en">deployed · monitored</span></div></div>
+            <div class="ws-card"><div class="ico">📋</div><div class="cat"><span data-lang="fr">Protocoles</span><span data-lang="en">Protocols</span></div><div class="nm"><span data-lang="fr">Appui aux protocoles</span><span data-lang="en">Protocol support</span></div><div class="ds"><span data-lang="fr">Urgences, réanimation néonatale : le bon protocole, étape par étape.</span><span data-lang="en">Emergency, neonatal ICU: the right protocol, step by step.</span></div><div class="st"><i></i><span data-lang="fr">déployé · monitoré</span><span data-lang="en">deployed · monitored</span></div></div>
+            <div class="ws-card"><div class="ico">🔬</div><div class="cat"><span data-lang="fr">Recherche</span><span data-lang="en">Research</span></div><div class="nm"><span data-lang="fr">Appui à la recherche</span><span data-lang="en">Research support</span></div><div class="ds"><span data-lang="fr">Revues de littérature, éligibilité des dossiers aux essais cliniques.</span><span data-lang="en">Literature reviews, screening records against trial criteria.</span></div><div class="st eval"><i></i><span data-lang="fr">en cohorte Impulse</span><span data-lang="en">in Impulse cohort</span></div></div>
+            <div class="ws-card"><div class="ico">💬</div><div class="cat"><span data-lang="fr">Patients</span><span data-lang="en">Patients</span></div><div class="nm"><span data-lang="fr">Éducation &amp; suivi patient</span><span data-lang="en">Patient education</span></div><div class="ds"><span data-lang="fr">Anesthésie pédiatrique, chirurgie, PMA : répondre aux questions fréquentes.</span><span data-lang="en">Paediatric anaesthesia, surgery, ART: answer common questions.</span></div><div class="st"><i></i><span data-lang="fr">déployé · monitoré</span><span data-lang="en">deployed · monitored</span></div></div>
+            <div class="ws-card"><div class="ico">📝</div><div class="cat"><span data-lang="fr">Pré-consultation</span><span data-lang="en">Intake</span></div><div class="nm"><span data-lang="fr">Pré-consultation</span><span data-lang="en">Pre-consultation</span></div><div class="ds"><span data-lang="fr">Oncologie, cardiologie, gériatrie : recueillir et structurer les données.</span><span data-lang="en">Oncology, cardiology, geriatrics: collect and structure data.</span></div><div class="st"><i></i><span data-lang="fr">déployé · monitoré</span><span data-lang="en">deployed · monitored</span></div></div>
+            <div class="ws-card"><div class="ico">🛡️</div><div class="cat"><span data-lang="fr">Qualité &amp; sécurité</span><span data-lang="en">Quality &amp; safety</span></div><div class="nm"><span data-lang="fr">Qualité &amp; sécurité</span><span data-lang="en">Quality &amp; safety</span></div><div class="ds"><span data-lang="fr">Déclaration d'événements indésirables, lecture des indicateurs qualité.</span><span data-lang="en">Adverse-event reporting, reading quality indicators.</span></div><div class="st eval"><i></i><span data-lang="fr">en cohorte Impulse</span><span data-lang="en">in Impulse cohort</span></div></div>
+          </div>
+        </div>
       </div>
-      <div class="reveal" style="margin-top:22px">
+      <div class="reveal" style="margin-top:14px">
         <div class="refs">
           <img class="ref-logo" src="../../assets/partners/ap-hp.webp" alt="AP-HP" />
           <img class="ref-logo" src="../../assets/partners/hotel-dieu.webp" alt="Hôtel-Dieu (AP-HP)" />
@@ -685,6 +771,77 @@
           <div class="eimp-figs"><span class="eimp-fig"><b>5 M$</b> · Google.org</span><span class="eimp-fig">AP-HP</span><span class="eimp-fig">Impulse Healthcare</span></div>
         </div>
       </a>
+    </div>
+  </section>
+
+  <!-- 4 · TEAM -->
+  <section class="slide" id="team">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">L'équipe</span><span data-lang="en">The team</span></p>
+      <h2 class="title reveal" style="max-width:28ch"><span data-lang="fr">Une équipe du <em class="hl">service public et de la tech</em>.</span><span data-lang="en">A team from <em class="hl">public service and tech</em>.</span></h2>
+      <div class="team reveal">
+        <div class="tm">
+          <img class="av" src="../../assets/team/paul.jpg" alt="Paul Duan" />
+          <div class="tm-n">Paul Duan</div>
+          <div class="tm-role"><span data-lang="fr">Fondateur &amp; Président</span><span data-lang="en">Founder &amp; President</span></div>
+          <div class="tm-bio"><span data-lang="fr">Entrepreneur social et data scientist. Reconnu par Forbes, Ashoka et le MIT Technology Review.</span><span data-lang="en">Social entrepreneur and data scientist. Recognized by Forbes, Ashoka and MIT Technology Review.</span></div>
+        </div>
+        <div class="tm">
+          <img class="av" src="../../assets/team/elodie.jpg" alt="Elodie Juan-Julia" />
+          <div class="tm-n">Elodie Juan-Julia</div>
+          <div class="tm-role">COO</div>
+          <div class="tm-bio"><span data-lang="fr">15+ ans de direction en scale-up. Ex-CFO de Dogami, Head of Finance chez Datadog.</span><span data-lang="en">15+ years of scale-up leadership. Former CFO at Dogami, Head of Finance at Datadog.</span></div>
+        </div>
+        <div class="tm">
+          <img class="av" src="../../assets/team/jeremie.jpg" alt="Jérémie Doucy" />
+          <div class="tm-n">Jérémie Doucy, PhD</div>
+          <div class="tm-role">CTO</div>
+          <div class="tm-bio"><span data-lang="fr">Doctorat en TAL. 15+ ans d'ingénierie logicielle et IA, dont Airbus.</span><span data-lang="en">PhD in NLP. 15+ years in software and AI engineering, including Airbus.</span></div>
+        </div>
+      </div>
+      <div class="team-rest reveal">
+        <div class="trc"><span class="av av-ph">AA</span><div><div class="trc-n">Augustin Ador</div><div class="trc-r"><span data-lang="fr">Lead Forward Deployed Engineer · ex-Dataiku</span><span data-lang="en">Lead Forward Deployed Engineer · ex-Dataiku</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/carine.jpg" alt="Carine Sit" /><div><div class="trc-n">Carine Sit</div><div class="trc-r"><span data-lang="fr">Directrice des programmes</span><span data-lang="en">Programs Director</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/vincent.jpg" alt="Vincent Vercamer" /><div><div class="trc-n">Vincent Vercamer, PhD</div><div class="trc-r"><span data-lang="fr">Directeur Santé · ex-Délégation au Numérique en Santé</span><span data-lang="en">Health Director · ex-Digital Health Delegation</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/alexis.jpg" alt="Alexis Jamet" /><div><div class="trc-n">Alexis Jamet</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/anna.jpg" alt="Anna Bauer" /><div><div class="trc-n">Anna Bauer</div><div class="trc-r"><span data-lang="fr">Directrice marketing</span><span data-lang="en">Marketing Director</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/noe.jpg" alt="Noé Bosc-Haddad" /><div><div class="trc-n">Noé Bosc-Haddad</div><div class="trc-r">Data Scientist</div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/didier.jpg" alt="Didier Lafforgue" /><div><div class="trc-n">Didier Lafforgue</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/olivier.jpg" alt="Olivier Doucy" /><div><div class="trc-n">Olivier Doucy</div><div class="trc-r"><span data-lang="fr">Software Engineer</span><span data-lang="en">Software Engineer</span></div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/melissa.jpg" alt="Mélissa Lacombe" /><div><div class="trc-n">Mélissa Lacombe</div><div class="trc-r">Communications</div></div></div>
+        <div class="trc"><img class="av" src="../../assets/team/neva.jpg" alt="Neva Sainte-Marie" /><div><div class="trc-n">Neva Sainte-Marie</div><div class="trc-r"><span data-lang="fr">Opérations</span><span data-lang="en">Operations</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · REFERENCES -->
+  <section class="slide" id="references">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Références</span><span data-lang="en">References</span></p>
+      <h2 class="title reveal" style="max-width:26ch"><span data-lang="fr">Ils nous <em class="hl">font confiance</em>.</span><span data-lang="en">They <em class="hl">trust us</em>.</span></h2>
+      <div class="reveal" style="margin-top:30px">
+        <div class="refs-lab"><span data-lang="fr">Institutions publiques &amp; partenaires</span><span data-lang="en">Public institutions &amp; partners</span></div>
+        <div class="partners-grid" style="justify-content:flex-start; gap:26px 34px; margin-bottom:24px">
+          <img src="../../assets/partners/france-travail.webp" alt="France Travail" />
+          <img src="../../assets/partners/ministere-travail.webp" alt="Ministère du Travail" />
+          <img src="../../assets/partners/ap-hp.webp" alt="AP-HP" />
+          <img src="../../assets/partners/assurance-maladie.webp" alt="L'Assurance Maladie" />
+          <img src="../../assets/partners/dinum.webp" alt="DINUM" />
+          <img src="../../assets/partners/caisse-des-depots.webp" alt="Caisse des Dépôts" />
+          <img src="../../assets/partners/actiris.webp" alt="Actiris · Bruxelles" />
+          <img src="../../assets/partners/uk-dwp.webp" alt="UK Dept for Work and Pensions" />
+          <img class="va" src="../../assets/partners/va.svg" alt="U.S. Dept of Veterans Affairs" />
+          <img src="../../assets/partners/togo.webp" alt="Government of Togo" />
+        </div>
+        <div class="refs-lab"><span data-lang="fr">Financeurs &amp; soutiens</span><span data-lang="en">Funders &amp; supporters</span></div>
+        <div class="partners-grid" style="justify-content:flex-start; gap:26px 34px">
+          <img src="../../assets/partners/google.webp" alt="Google.org" />
+          <img src="../../assets/partners/gates.webp" alt="Gates Foundation" />
+          <img src="../../assets/partners/yc.webp" alt="Y Combinator" />
+          <img src="../../assets/partners/rwjf.webp" alt="Robert Wood Johnson Foundation" />
+          <img src="../../assets/partners/fast-forward.webp" alt="Fast Forward" />
+        </div>
+      </div>
     </div>
   </section>
 
