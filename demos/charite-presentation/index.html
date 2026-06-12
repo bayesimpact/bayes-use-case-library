@@ -44,6 +44,11 @@
   .eimp-figs{ display:flex; gap:8px; flex-wrap:wrap; margin-top:9px; }
   .eimp-fig{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--ink-soft); background:var(--cream); border:1px solid var(--border-soft); border-radius:7px; padding:5px 10px; }
   .eimp-fig b{ color:var(--accent-orange); }
+  /* partner valorization badge (on a use-case demo) */
+  .pscope{ display:inline-flex; align-items:center; gap:13px; background:var(--card); border:1px solid var(--border-soft); border-radius:12px; padding:8px 15px; box-shadow:var(--shadow); margin-top:10px; }
+  .pscope img{ height:24px; width:auto; display:block; flex:0 0 auto; }
+  .pscope b{ font-size:18px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
+  .pscope span{ font-size:12px; color:var(--muted); }
 
   /* ── team ── */
   .team{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; max-width:900px; }
@@ -315,12 +320,10 @@
         <div class="tl-item"><span class="tl-y">2026</span><span class="tl-d"><span data-lang="fr"><b>Togo</b> : services publics par WhatsApp pour 9M de citoyens.</span><span data-lang="en"><b>Togo</b>: public services on WhatsApp for 9M citizens.</span></span></div>
       </div>
       <div class="stats reveal">
-        <div class="stat"><b>9M</b><span data-lang="fr">citoyens · Togo</span><span data-lang="en">citizens · Togo</span></div>
-        <div class="stat"><b>~6M</b><span data-lang="fr">demandeurs d'emploi · France Travail</span><span data-lang="en">jobseekers · France Travail</span></div>
-        <div class="stat"><b>8M+</b><span data-lang="fr">patients/an · AP-HP</span><span data-lang="en">patients/yr · AP-HP</span></div>
-        <div class="stat"><b>3</b><span data-lang="fr">continents · depuis 2014</span><span data-lang="en">continents · since 2014</span></div>
+        <div class="stat"><b>2014</b><span data-lang="fr">fondés en Silicon Valley</span><span data-lang="en">founded in Silicon Valley</span></div>
+        <div class="stat"><b>3</b><span data-lang="fr">continents</span><span data-lang="en">continents</span></div>
+        <div class="stat"><b>MIT</b><span data-lang="fr">open-source, à but non lucratif</span><span data-lang="en">open-source, nonprofit</span></div>
       </div>
-      <p class="footnote reveal" style="margin-top:14px"><span data-lang="fr">Autant d'institutions où la Bayes Platform se déploie : cumulés, <b>des millions de bénéficiaires</b>.</span><span data-lang="en">As many institutions where the Bayes Platform deploys: together, <b>millions of beneficiaries</b>.</span></p>
     </div>
   </section>
 
@@ -542,6 +545,7 @@
     <div class="slide-inner">
       <p class="uc-tag reveal"><span data-lang="fr">Cas d'usage · Santé</span><span data-lang="en">Use case · Healthcare</span></p>
       <h2 class="title reveal" style="max-width:30ch"><span data-lang="fr">Des dizaines de cas d'usage, <em class="hl">au service des soignants et des patients</em>.</span><span data-lang="en">Dozens of use cases, <em class="hl">serving caregivers and patients</em>.</span></h2>
+      <div class="pscope reveal"><img src="../../assets/partners/ap-hp.webp" alt="AP-HP" /><div><b>8M+</b> <span data-lang="fr">patients/an à l'AP-HP, dans le périmètre</span><span data-lang="en">patients/yr at AP-HP, in the use-case scope</span></div></div>
       <p class="lead reveal" style="margin-top:4px; max-width:64ch"><span data-lang="fr">Dans les hôpitaux publics, les besoins remontent du terrain. Notre programme d'accompagnement <b>Impulse</b> les transforme en agents, déployés sur la Bayes Platform.</span><span data-lang="en">In public hospitals, needs come from the ground up. Our <b>Impulse</b> program turns them into agents, deployed on the Bayes Platform.</span></p>
       <div class="hc-grid reveal">
         <div class="hc"><div class="hc-k"><span data-lang="fr">Interprétation clinique</span><span data-lang="en">Clinical insights</span></div><div class="hc-t"><span data-lang="fr">Lire &amp; expliquer les résultats</span><span data-lang="en">Read &amp; explain results</span></div><div class="hc-e"><span data-lang="fr">Génétique, immunologie, nutrition : aider le clinicien à interpréter analyses et examens.</span><span data-lang="en">Genetics, immunology, nutrition: help clinicians interpret tests and results.</span></div></div>
