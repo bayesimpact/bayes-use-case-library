@@ -92,6 +92,9 @@
   .uc-watermark svg{ display:block; width:420px; height:auto; }
   /* WhatsApp chrome icons (consistent line set, replacing emoji) */
   .wa-ic{ width:17px; height:17px; display:block; }
+  /* featured card (orange-outlined highlight) */
+  .feat{ border-color:var(--accent-orange) !important; box-shadow:0 0 0 2px rgba(255,132,0,.1), var(--shadow) !important; }
+  .feat .kicker{ color:var(--accent-orange); }
 
   /* ── open-source philosophy ── */
   .phi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }
@@ -414,32 +417,59 @@
     </div>
   </section>
 
-  <!-- 17 · HOW WE WORK -->
+  <!-- 17 · NOT A CONTRACTOR — a partner building a commons -->
   <section class="slide" id="partnership">
     <div class="slide-inner">
       <p class="eyebrow reveal"><span data-lang="fr">Comment nous travaillons</span><span data-lang="en">How we work</span></p>
-      <h2 class="title reveal"><span data-lang="fr">Un partenariat, <em class="hl">pas un fournisseur</em>.</span><span data-lang="en">A partnership, <em class="hl">not a vendor</em>.</span></h2>
+      <h2 class="title reveal"><span data-lang="fr">Un partenaire, <em class="hl">pas un prestataire</em>.</span><span data-lang="en">A partner, <em class="hl">not a contractor</em>.</span></h2>
+      <p class="lead reveal" style="margin-top:4px; max-width:60ch"><span data-lang="fr">Un prestataire gagne à vous rendre dépendant. À but non lucratif, nous gagnons quand l'impact se diffuse. D'où des incitations inversées.</span><span data-lang="en">A contractor profits from keeping you dependent. As a nonprofit, we win when impact spreads. Hence the opposite incentives.</span></p>
       <div class="cards c3 reveal">
         <div class="card">
-          <div class="kicker"><span data-lang="fr">OPEN-SOURCE</span><span data-lang="en">OPEN-SOURCE</span></div>
-          <h3><span data-lang="fr">Aucun verrou propriétaire</span><span data-lang="en">No vendor lock-in</span></h3>
-          <p><span data-lang="fr">Le code vous appartient. Déployez, modifiez, reprenez en main à tout moment.</span><span data-lang="en">The code is yours. Deploy, modify, take over at any time.</span></p>
+          <div class="kicker"><span data-lang="fr">Sans verrou</span><span data-lang="en">No lock-in</span></div>
+          <h3><span data-lang="fr">Le code est à vous</span><span data-lang="en">The code is yours</span></h3>
+          <p><span data-lang="fr">Open-source sous <b>licence MIT</b>. Déployez, modifiez, reprenez la main quand vous voulez.</span><span data-lang="en">Open-source under the <b>MIT license</b>. Deploy, modify, take over whenever you want.</span></p>
         </div>
         <div class="card">
-          <div class="kicker"><span data-lang="fr">TRANSFERT</span><span data-lang="en">TRANSFER</span></div>
-          <h3><span data-lang="fr">Montée en compétences</span><span data-lang="en">Skills transfer</span></h3>
-          <p><span data-lang="fr">Vos équipes métier et techniques prennent la main. Bayes forme et accompagne.</span><span data-lang="en">Your business and technical teams take over. Bayes trains and supports.</span></p>
+          <div class="kicker"><span data-lang="fr">L'impact, pas la facture</span><span data-lang="en">Impact, not billings</span></div>
+          <h3><span data-lang="fr">Nos intérêts sont les vôtres</span><span data-lang="en">Our interests are yours</span></h3>
+          <p><span data-lang="fr">Nous optimisons la <b>portée et les résultats</b>, jamais votre dépendance ni des heures facturées.</span><span data-lang="en">We optimize for <b>reach and outcomes</b>, never your dependency or billable hours.</span></p>
         </div>
-        <div class="card">
-          <div class="kicker"><span data-lang="fr">MISSION</span><span data-lang="en">MISSION</span></div>
-          <h3><span data-lang="fr">Alignés sur l'intérêt général</span><span data-lang="en">Aligned with the public good</span></h3>
-          <p><span data-lang="fr">Organisation à but non lucratif : nos intérêts sont les vôtres, pas ceux d'actionnaires.</span><span data-lang="en">Nonprofit: our interests are yours, not shareholders'.</span></p>
+        <div class="card feat">
+          <div class="kicker"><span data-lang="fr">Un commun numérique</span><span data-lang="en">A digital commons</span></div>
+          <h3><span data-lang="fr">Chaque cas d'usage profite au suivant</span><span data-lang="en">Every use case helps the next</span></h3>
+          <p><span data-lang="fr">Nous répliquons chaque cas d'usage dans une <b>bibliothèque ouverte</b>, partagée avec des organisations similaires partout dans le monde. Démocratiser l'IA de pointe, pour l'intérêt général.</span><span data-lang="en">We replicate every use case into an <b>open library</b>, shared with similar organizations worldwide. Democratizing state-of-the-art AI, for the public good.</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 18 · CLOSING -->
+  <!-- 18 · TWO MODES OF ENGAGEMENT -->
+  <section class="slide" id="engagement">
+    <div class="slide-inner">
+      <p class="eyebrow reveal"><span data-lang="fr">Comment démarrer</span><span data-lang="en">How to start</span></p>
+      <h2 class="title reveal" style="max-width:26ch"><span data-lang="fr">Deux façons de <em class="hl">travailler ensemble</em>.</span><span data-lang="en">Two ways to <em class="hl">work together</em>.</span></h2>
+      <div class="cards c2 reveal" style="margin-top:20px">
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">Mode 1 · Cas d'usage ciblés</span><span data-lang="en">Mode 1 · Targeted use cases</span></div>
+          <h3><span data-lang="fr">Vous avez des cas d'usage en tête</span><span data-lang="en">You have use cases in mind</span></h3>
+          <p><span data-lang="fr">Nous les industrialisons ensemble, de l'idée à la production. Ou nous <b>répliquons depuis notre bibliothèque</b> des cas déjà éprouvés chez des partenaires similaires.</span><span data-lang="en">We productionize them together, from idea to production. Or we <b>replicate from our library</b> cases already proven with similar partners.</span></p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span data-lang="fr">Mode 2 · Programme d'accompagnement</span><span data-lang="en">Mode 2 · Accompaniment program</span></div>
+          <h3><span data-lang="fr">Faire émerger les cas d'usage du terrain</span><span data-lang="en">Surface use cases from the ground</span></h3>
+          <p><span data-lang="fr">Nous mobilisons vos <b>experts métier</b> et les accompagnons à chaque étape :</span><span data-lang="en">We mobilize your <b>domain experts</b> and guide them at every step:</span></p>
+          <div class="bpmn" style="margin-top:12px">
+            <span class="bpmn-node"><span data-lang="fr">Sélection</span><span data-lang="en">Selection</span></span><span class="bpmn-c">›</span>
+            <span class="bpmn-node"><span data-lang="fr">Expérimentation</span><span data-lang="en">Experimentation</span></span><span class="bpmn-c">›</span>
+            <span class="bpmn-node"><span data-lang="fr">Mise en production</span><span data-lang="en">Production</span></span>
+          </div>
+        </div>
+      </div>
+      <p class="footnote reveal" style="margin-top:20px"><span data-lang="fr">Notre programme <b>Impulse</b> (santé) illustre le mode 2 : des dizaines de cas d'usage remontés par les soignants.</span><span data-lang="en">Our <b>Impulse</b> program (healthcare) is mode 2 in action: dozens of use cases surfaced by caregivers.</span></p>
+    </div>
+  </section>
+
+  <!-- 19 · CLOSING -->
   <div data-shared="closing"></div>
 
 </main>
